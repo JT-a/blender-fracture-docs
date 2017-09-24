@@ -199,21 +199,13 @@ If you use despite this warning: You can draw points or SHORT lines. Each stroke
 
 <b>Percentage:</b> Percentage of the sum of points of all selected point sources to actually use for fracture.
 
-<b>Threshold vertex group:</b> Vertex group name for defining weighted thresholds on different mesh parts.  You can weight paint weights on the mesh PRIOR to fracture with modifier. This will not be visible with enabled modifier. (TODO) The weights reduce the given threshold by multiplying weights and threshold. A weight at 1 means full threshold, the lower you get, the lower the threshold will be. (0 -> undetermined ?, TEST...)
+<b>Threshold Vertex Group:</b> Vertex group name for defining weighted thresholds on different mesh parts.  You can weight paint weights on the mesh PRIOR to fracture with modifier. This will not be visible with enabled modifier. (TODO) The weights reduce the given threshold by multiplying weights and threshold. A weight at 1 means full threshold, the lower you get, the lower the threshold will be. (0 -> undetermined ?, TEST...)
 
-<b>Passive vertex group:</b> Vertex group name for defining passive mesh parts.  It will remain static during rigid body simulation. You can paint passive parts with high weights analogous to the thresholds. It is recommended to use weight of 1, because the total weight of all vertices of a shard must be > 0.5 to set the shard passive, so it remains static during sim. The objects can either be active or passive, there is nothing in between.
+<b>Passive Vertex Group:</b> Vertex group name for defining passive mesh parts.  It will remain static during rigid body simulation. You can paint passive parts with high weights analogous to the thresholds. It is recommended to use weight of 1, because the total weight of all vertices of a shard must be > 0.5 to set the shard passive, so it remains static during sim. The objects can either be active or passive, there is nothing in between.
 
 <b>Inner Vertex Group:</b> Vertex group name for defining inner vertices. Will contain vertices of inner faces. Used for Boolean and Bisect + Fill only.
 
-[NU]
-inner crease
-crease at edges of inner faces
-scorpion81> during the sim... hmm inner crease was for (i think) having some hard edges for smooth inner faces (NOT SURE atm...hmmm i only recall it was together with that example jensverwiebe(?) showed me, with that microdisplacement brick shader + FM (on stone pillars) or was it KaiK ?
-<scorpion81> or was it for subsurf after FM ?
-<scorpion81> so you can better control the catmull clark subsurf without needing to fallback to simple subsurf... hmmm
-<scorpion81> i think it was the latter one
-[ ] clean up later
-[NU END]
+<b>Inner Crease:</b> generate a crease at edges of inner faces. During a physics simulation inner crease forms hard edges for smooth inner faces. This works well with microdisplacement.  It may be used in conjunction with the Sub Surface modifier so for better control of the Catmull-Clark subsurface without needing to fallback to simple subsurface.
 <br />
 
 =Fracture Constraint Settings Panel for Simulations=
@@ -228,42 +220,30 @@ Less constraints means less stable but faster simulation. More constraints means
 
 <b>Breakable:</b> Constraints can be broken if it receives an impulse above the threshold.
 
-[NU]
-Constrained Collision
-let constrained shards collide with each other
-<scorpion81> well constrained objects whose constraints are still intact wont collide with each other, with that new settings they will do (allows selfcollision with  FM "cloth" for example, where pieces still are half-attached to the mesh)
-<scorpion81> KaiK made some clever test file for that, with a "ring" of cubes (where 1 cube is missing in, so kind of an "open loop"), which demonstrates that
-<scorpion81> the connected cubes form a "constraint island"
-<scorpion81> if they break somewhere, the constraint islands will be split
-scorpion81> say it breaks to 2 pieces, you get 2 constraint islands... cubes being in different islands will collide, not so in the same island
-<scorpion81> with constrained collision they will always collide
-[NU END]
+<b>Constrained Collision:</b> Let constrained shards collide with each other.  The constrained objects whose constraints are still intact will not collide with each other.  With this new setting it allows for selfcollision with Fracture Modifier "fake cloth" where pieces are still half attached to the mesh for example.  Another clever use would be with a "ring" of cubes, where 1 cube is missing so kind of an open loop, that demonstrates that the connected cubes form a "constraint island."  If they break somewhere, the constraint islands will be split.  So let's say it breaks into 2 pieces, you then get 2 constraint islands.  Cubes being in different islands will collide but not if they are in the same island. With constrained collision they will always collide.
 
-<b>Use Compounds</b> Experimental setting.  Use Bullet method compounds instead of fixed constraints.  Supposedly this is faster with less wobbling.
+<b>Use Compounds:</b> This is an experimental setting that uses Bullet method compounds instead of fixed constraints.  Supposedly this is faster with less wobbling.
 
 <b>Constraint Method:</b>
-<br />Vertex - Build constraints based on distances between vertices.  Note: use lower values here.
-<br />Centroid - Build constraints based on distances between centroids.
+<br />Vertex - Build constraints based on distances between vertices.  Note: use lower values here. It almost always connects only adjacent neighbors using the
+distance between the vertices of nearby shards.
+<br />Centroid - Build constraints based on distances between centroids. Islands can connect farther away than the adjacent ones to get more stiff objects.
+<br>So with one the distance is between centroids and with the other the distance is between vertices.  
 
-[NU]
-Constraint limit, per Meshisland. Maximum number of neighbors being searched per mesh island during constraint creation, 0 or unlimited<br>
-Search Radius: Limit search radius up to which 2 mesh islands are being connected, 0 for entire bounding box 
-<scorpion81> well that is old code / settings... they limit the amount of maximum connection per mesh island and the radius in which shards are being searched to connect with the current shard being looked at
-<scorpion81> with centroid mode you also can connect islands farther away than the adjacent ones to get more stiff objects
-<scorpion81> in vertex mode you (almost) always connect only adjacent neighbors
-<scorpion81> distance is between vertices (of nearby shards) there
-<scorpion81> i have been too lazy to use 2 variables there
-<scorpion81> so at one time the distance is between centroids, the other time between vertices
-[NU END]
+<b>Constraint limit, per Meshisland:</b> Maximum number of neighbors being searched per mesh island during constraint creation, 0 or unlimited.
 
-[NU]
-Constraint Breaking Settings
-[NU END]
+<b>Search Radius:</b> Limit search radius up to which 2 mesh islands are being connected, 0 for entire bounding box. Note: This is an older setting that limits the amount of maximum connections per mesh island and the radius in which shards are being searched to connect with the current shard being looked at. 
+
+<b>Compound Breaking Settings</b><br>
 <b>Threshold:</b> It determines what force must affect the constraint in order to break it. higher threshold means it will need more force to break the constraint, It is recommended lower those thresholds when using the default mass or to increase mass to get more easy breaks. This avoids "rubber" behavior which occurs on high thresholds low masses and "long range" constraints mostly.
 
 <b>Cluster breaking threshold:</b> A high default value applied to members INSIDE a cluster to fake secondary fracture. Tertiary and higher levels are not supported, as you cannot cluster clusters.
 
-===Constraint [NU]Special[NU END] Breaking Settings===
+<b>Minimum Impulse:</b> Determines how strong the remaining impulse must be for continuing damage propagation.
+
+<b>Stability Factor:</b> Determines how stable an objec is.  0 means minimum mass/minimum mass+maximum mass.  1 means maximum threshold everywhere.
+
+===Constraint Special Breaking Settings===
 <b>Percentage:</b> If the given percentage of the constraints per island is broken, then ALL remaining constraints of this island will break automatically. Setting it to 0 disables it. Set to high values to completely break all constraints which might dangle around after collision, lower values makes the object break more easily, 25 means if only 25% are broken, break the rest too for example.
 
 <b>Angle:</b> If an angle greater than x degrees occur between two islands, break the according constraint. This restricts bending behavior of constraints, which will break then when bent too much.
