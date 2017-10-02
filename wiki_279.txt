@@ -1,617 +1,589 @@
-==Fracture Modifier Documentation==
-for blender 2.79, Fracture Modifier branch merged with official release of blender
-<br /><br /><br />
+== Fracture Modifier Dokumentation ==
+für Blender 2.79, Fracture Modifier Zweig mit offiziellen Release von blender verschmolzen
+<br /> <br /> <br />
 
-[[File:Scorpion81_Fracture_Modifier_2.79_custom_splash.jpg‎|center|text-below|400px|Splash with example]] 
-
-<br />
-=Basic Concept=
-
-<b>This tool makes it fun to break things!  Fracture!  Shatter!  Explode!  Destroy!  Now including bending metal, deforming plastic and fake cloth made with physics rigid bodies!</b>  Many options are available to choose the type of resulting objects and how they break apart and animate. Custom helpers allow advanced detail control and shaping of the fracturing pattern. It is a modifier so it is nondestructive to the original geometry unless applied and it can interact with other modifiers in the stack.  The modifier works seamlessly with the Bullet Physics library to make simulations and animations.  With the added power of a sophisticated contraints system it is a feature rich destruction platform.
-
-<b>The modifier is very fast</b> by itself in the 1,000 and above shard range and it keeps all the resulting shards in the modifier so they do not clutter the Outliner.  The fast workflow gives artists a powerful tool for experimentation and fine tuning results for both still images of fractured objects and physics based destruction animations and visual effects work.
-
-<b>The Fracture Modifier is integrated closely with the Bullet Physics library subsystem</b> in Blender for animation and simulation purposes.  It has an advanced automatic and easily customized constraint building system with several settings to artistically control the results of the simulation.
-
-<b>Although the Fracture Modifier is a branch(see below) it has an active development team and a large user base.</b> The development team is working with Blender core developers on updating Blender v2.8 storage capabilities so it can be included in the official releases.
+[[File:Scorpion81_Fracture_Modifier_2.79_custom_splash.jpg‎|center|text-below|400px|Splash with example]]
 
 <br />
+= Grundkonzept =
 
-<b>NOTE:</b> The Fracture Modifier is a custom build from a code branch of Blender and not available in the Official Blender program releases.  It is not a Python addon.  See below for more information on downloading and using the FM branch.
+<b> Dieses Tool macht es Spaß, Dinge zu brechen! Fraktur! Zerschmettern! Explodieren! Zerstören! Jetzt mit Biege-Metall, deformieren Kunststoff und gefälschte Tuch mit Physik starren Körper gemacht! </b> Viele Optionen sind verfügbar, um die Art der resultierenden Objekte zu wählen und wie sie auseinander brechen und animieren. Kundenspezifische Helfer erlauben eine detaillierte Detailsteuerung und Formgebung des Frakturmusters. Es ist ein Modifikator, so dass es nicht zerstörerisch für die ursprüngliche Geometrie ist, es sei denn angewendet und es kann mit anderen Modifikatoren im Stapel interagieren. Der Modifikator arbeitet nahtlos mit der Bullet Physics-Bibliothek zusammen, um Simulationen und Animationen zu machen. Mit der zusätzlichen Leistung eines anspruchsvollen Contraints-Systems ist es eine funktionsreiche Zerstörungsplattform.
+
+<b> Der Modifikator ist sehr schnell </b> selbst in der 1.000 und oberhalb des Shard-Bereichs und hält alle resultierenden Scherben im Modifikator, so dass sie den Outliner nicht stören. Der schnelle Workflow gibt den Künstlern ein leistungsfähiges Werkzeug für Experimente und Feinabstimmungsergebnisse für beide Standbilder von gebrochenen Objekten und physikbasierten Zerstörungsansimationen und visuellen Effekte.
+
+<b> Der Fracture Modifier ist eng mit dem Bullet Physics Library Subsystem </b> in Blender für Animations- und Simulationszwecke integriert. Es verfügt über ein fortgeschrittenes automatisches und leicht angepasstes Constraint-Gebäudesystem mit mehreren Einstellungen, um die Ergebnisse der Simulation künstlerisch zu steuern.
+
+<b> Obwohl der Bruchmodifikator ein Zweig ist (siehe unten), hat er ein aktives Entwicklungsteam und eine große Benutzerbasis. </b> Das Entwicklungsteam arbeitet mit Blender Core-Entwicklern bei der Aktualisierung von Blender v2.8 Speicherkapazitäten in die offiziellen Veröffentlichungen aufgenommen werden.
 
 <br />
 
-=Getting Started=
+<b> HINWEIS: </b> Der Fracture Modifier ist ein benutzerdefinierter Build aus einem Code-Zweig von Blender und nicht verfügbar in den offiziellen Blender-Programm-Releases. Es ist kein Python-Addon. Weitere Informationen zum Download und zur Verwendung der FM-Filiale finden Sie weiter unten.
 
- [[File:200px-Scorpion81-User_Fracture_Documentation_Main_Panel.png|right|text-above|287px|Main Panel]]
+<br />
+
+= Gaetting Begann =
+
+[[File:200px-Scorpion81-User_Fracture_Documentation_Main_Panel.png|right|text-above|287px|Main Panel]]
 
 {| class="wikitable"
-The basic workflow is:  
-#Select an object to fracture 
-#Go to Physics Tab in Property Editor
-#Select Enable physics for: Fracture
-#Click "Execute Fracture"
-#Press {{Shortcut|alt|a}} to start and generate the rigid body simulation
+Der grundlegende Workflow ist:
+#Wählen Sie ein Objekt zum Bruch
+#Go zum Physik-Tab im Eigenschaftseditor
+#Wählen Sie die Physik für: Fraktur
+#Klicken Sie auf "Bruch ausführen"
+#Press {{Shortcut|alt|a}} zum Starten und Erzeugen der starren Körpersimulation
 
-Note: make sure there is a passive rigid body ground plane below the object for it to collide with so it will separate into the shards.
-<br /><br />
-For all settings "above" the execute button and the point source and fracture percentage, you always need to re-execute the modifier on the rigid body cache start frame, usually frame 1, to see an effect.
+Hinweis: Stellen Sie sicher, dass es eine passive starre Körper Grundplatte unter dem Objekt für sie zu kollidieren, so wird es in die Scherben zu trennen.
+<br /> <br />
+Für alle Einstellungen "oben" die Schaltfläche "Ausführen" und die Punktquelle und den Bruchprozentsatz, müssen Sie immer den Modifikator auf dem starren Körper-Cache-Start-Frame, normalerweise Frame 1, erneut ausführen, um einen Effekt zu sehen.
 |}
 
 <br />
 
-=Useful Links and Downloads=
-(NOTE: to also stay on this page right click on the links and click open in new tab or window.)
+= Nützliche Links und Downloads =
+(HINWEIS: um auch auf dieser Seite zu bleiben, klicken Sie mit der rechten Maustaste auf die Links und klicken Sie auf eine neue Registerkarte oder ein Fenster.)
 
-* [http://blenderartists.org/forum/showthread.php?343637 BlenderArtists.org support forum thread]
+* [http://blenderartists.org/forum/showthread.php?343637 BlenderArtists.org Support Forum Thread]
 
-* IRC chat support channel #blenderfracture on freenode.net or at http://webchat.freenode.net   
+* IRC Chat Support Channel #blenderfracture auf freenode.net oder bei http://webchat.freenode.net
 
-* [https://www.facebook.com/FractureModifier/ Facebook Page]
+* [https://www.facebook.com/FractureModifier/ Facebook Seite]
 
-* Blender on Stack Exchange: [https://blender.stackexchange.com/search?q=fracture+modifier Fracture Modifier search]
+* Blender auf Stack Exchange: [https://blender.stackexchange.com/search?q=fracture+modifier Fracture Modifier search]
 
 ==DF-VFX Hosted Builds==
 
-*http://df-vfx.de/fracturemodifier/ Windows, Linux and Mac OS X - Thanks to DF-VFX for hosting these
-*http://df-vfx.de/fracturemodifier/learn-fracturing/ DF-VFX's excellent tutorials page
+* http://df-vfx.de/fracturemodifier/ Windows, Linux und Mac OS X - Danke an DF-VFX für das Hosting dieser
+* http://df-vfx.de/fracturemodifier/learn-fracturing/ DF-VFX's hervorragende Tutorials Seite
 
-(NOTE: Current builds are merged with Blender v2.79 and in general the FM builds merged with official releases are usually available a week or two after the official releases.  Only 64 bit builds are provided.)
+(HINWEIS: Die aktuellen Builds werden mit Blender v2.79 zusammengeführt und im Allgemeinen sind die FM-Builds, die mit offiziellen Releases zusammengeführt werden, in der Regel wöchentlich oder zwei nach den offiziellen Releases verfügbar. Es werden nur 64-Bit-Builds bereitgestellt.)
 
-==Other Links==
-(NOTE: Jen's build is always the latest development and testing build.  It is only in 64 bit Linux with static libs for use on most distros. Use our Blender Artist forum thread to watch for when those are released.  Sometimes Kai's Graphicall build will provide a development build also.)
+==Andere Links==
+(HINWEIS: Jens' Build ist immer die neueste Entwicklung und Test-Build.Es ist nur in 64-Bit-Linux mit statischen libs für den Einsatz auf die meisten distros.Benutzen Sie unsere Blender Artist Forum Thread zu sehen, wenn diese freigegeben werden.Manchmal Kai's Graphicall bauen wird einen Entwicklungsaufbau auch bieten.)
 
-*http://www.jensverwiebe.de/Blender/blender_fracture_modifier_linux64_latest.tar.xz      Linux 64 bit build
-*http://www.graphicall.org/1148  Windows 64 bit Graphicall.org Build
+* http://www.jensverwiebe.de/Blender/blender_fracture_modifier_linux64_latest.tar.xz Linux 64 Bit bauen
+* http://www.graphicall.org/1148 Windows 64 bit Graphicall.org Build
 
-==Source Code==
+==Quellcode==
 
-The Fracture Modifier is a special branch of Blender.  It uses methods that are currently not compatible with Blender's internal storage capabilities. The FM branch is merged with and can be used in place of official releases with complete compatibility of other release features.  A "config" folder under the 2.79 folder can be created by the user to avoid sharing settings with other installed Blender versions. This way the FM can be tested separately. 
+Der Bruchmodifikator ist ein Spezialzweig von Blender. Es verwendet Methoden, die derzeit nicht mit den internen Speicherfunktionen von Blender kompatibel sind. Der FM-Zweig wird zusammengeführt und kann anstelle von offiziellen Releases mit vollständiger Kompatibilität anderer Release-Features verwendet werden. Ein "config" -Ordner unter dem Ordner 2.79 kann vom Benutzer erstellt werden, um die Freigabe von Einstellungen mit anderen installierten Blender-Versionen zu vermeiden. Auf diese Weise kann die FM separat getestet werden.
 
 <b>GitHub repo</b>
 https://github.com/scorpion81/blender-fracture/tree/fracture_modifier
-<br />(NOTE: you will have to manually copy over the scripts and locale folders from another blender source folder.)
+<br /> (HINWEIS: Sie müssen manuell über die Skripts und Gebietsschema-Ordner aus einem anderen Mix-Quellordner kopieren.)
 
-Helper addon and pie menu source code https://github.com/scorpion81/blender-fracture-helper 
+<b>Helper-Addon und Pie-Menü Quellcode </b> https://github.com/scorpion81/blender-fracture-helper
 
-<b>Blender.org official branch</b> https://git.blender.org/gitweb/gitweb.cgi/blender.git/shortlog/refs/heads/fracture_modifier
-<br />(NOTE: you can also check out the branch when you download and work with Blender's source code master via git.)
+<b>Diese Dokumentation Quellcode </b> https://github.com/JT-a/blender-fracture-docs Beiträge Willkommen.
 
-If you have issues building the Fracture Modifier branch please ask for help on our Blender Artists thread or in our IRC chat room mentioned above or check the [https://wiki.blender.org/index.php/Dev:Doc/Building_Blender Building Blender wiki page].
+<b>Blender.org offizieller Zweig </b> https://git.blender.org/gitweb/gitweb.cgi/blender.git/shortlog/refs/heads/fracture_modifier
+<br /> (HINWEIS: Sie können auch den Zweig auschecken, wenn Sie herunterladen und mit Blenders Quellcode-Master über Git arbeiten.)
 
-<b>NOTE:</b>  Our exciting under development features are available if you build yourself from the source code repo.  Feel free to ask questions about features in development on our BA thread mentioned elsewhere here.
+Wenn Sie Fragen haben, die den Fraktur-Modifikator-Zweig aufbauen, bitten wir um Hilfe zu unserem Blender-Künstler-Thread oder in unserem IRC-Chat-Raum, der oben erwähnt wurde, oder das [https://wiki.blender.org/index.php/Dev:Doc/Building_Blender Building Blender Wiki Seite].
 
-<br />
-
-=New Improvements=
-Recent improvements, additions and clarifications are here for now but eventually will be integrated into the rest of the docs.
-
-<b>Some Improvements in the v2.79 Based Build:</b>
-*GUI workflow adjustments, always improving this for those with a need for speed!
-*Cutting edge algorithm and settings for material types bending metal, deforming plastic, fake cloth
-*[https://en.wikipedia.org/wiki/Plasticity_(physics) Deforming Plastic] settings provide the ability to control shape response yield
-*The new material types are rigid body based so they are fully physics sim compatible
-*Improved Fracture Helpers addon and a newly added pie menu for 3D View workflow
-*New addon features include a time/speed controller and Dynamic Paint controlled features
-*The addon's automatic Smoke/Dust/Debris system has been improved to use Dynamic Paint
-*Continued development of advanced constraint management system beyond standard blender
-*More settings now also work on clusters as well
-*New Automerge setting used for material type results and other clever combinations
-*Boolean Solver is now selectable between blender's internal Carve or BMesh methods
-*Improved Convert To Keyframed Objects with new additional settings
-*Trigger management improvement especially for "kinetic" interaction and stopping
-*Shadow Catching is now available in blender 2.79 and now usable in the FM workflow
-
-NOTE: The Fracture Modifier is a sophisticated tool and platform intentionally designed with experimentation and fine control in mind.  So unexpected and undesirable results are occasionally part of the creative process and workflow. Fracture ON! 
+<b> HINWEIS: </b> Unsere spannenden Unterentwicklungsfunktionen stehen zur Verfügung, wenn Sie sich aus dem Quellcode-Repo aufbauen. Fühlen Sie sich frei, Fragen über Funktionen in der Entwicklung in unseren oben genannten Kommunikationskanälen zu stellen.
 
 <br />
 
-=Fracture Settings Panel=
-(in Properties Editor Physics Tab)
-<br />Note:  in general, many settings are best used by experimenting with them and combinations to find the desired results.
+= Neue Verbesserungen =
+Aktuelle Verbesserungen, Ergänzungen und Klarstellungen sind hier für jetzt aber schließlich werden in den Rest der docs integriert werden.
 
-==Presets== 
-You can store all settings for Fracture Settings, Fracture Constraint Settings and Fracture Utilities panels in presets. After you selected an existing preset, you need to Execute Fracture afterwards to apply the changed settings.
+<b>Einige Verbesserungen im v2.79 Based Build:</b>
+* GUI-Workflow-Anpassungen, immer verbessern dies für diejenigen mit einem Bedarf an Geschwindigkeit!
+* Schneide-Algorithmus und Einstellungen für Material-Typen Biegen von Metall, deformierenden Kunststoff, gefälschte Tuch
+* [https://en.wikipedia.org/wiki/Plasticity_(physics) deformierender plastik] -Einstellungen bieten die Möglichkeit, die Form-Response-Ausbeute zu kontrollieren
+* Die neuen Material-Typen sind starre Körper-basierte, so dass sie völlig Physik sim kompatibel sind
+* Verbesserte Bruchhelfer-Addon und ein neu hinzugefügtes Tortenmenü für den 3D-View-Workflow
+* Neue Addon-Features beinhalten einen Zeit- / Geschwindigkeitsregler und dynamische Lackgesteuerte Funktionen
+* Das Addon's Smoke / Dust / Debris System wurde verbessert, um Dynamic Paint zu verwenden
+* Fortsetzung der Entwicklung von fortschrittlichen Constraint-Management-System über Standard-Mixer
+* Weitere Einstellungen funktionieren nun auch auf Clustern
+* Neue Automerge-Einstellung für Material-Typ-Ergebnisse und andere clever Kombinationen verwendet
+* Boolean Solver ist nun zwischen den internen Carve- oder BMesh-Methoden von Blender auswählbar
+* Verbesserte Konvertierung zu Keyframed-Objekten mit neuen zusätzlichen Einstellungen
+* Trigger Management Verbesserung vor allem für "kinetische" Interaktion und Stoppen
+* Shadow Catching ist ab sofort im Blender 2.79 verfügbar und nun im FM-Workflow verwendbar
+
+HINWEIS: Der Bruchmodifikator ist ein anspruchsvolles Werkzeug und eine Plattform, die absichtlich mit Experimentieren und Feinsteuerung konzipiert wurde. So sind unerwartete und unerwünschte Ergebnisse gelegentlich Teil des kreativen Prozesses und des Workflows. Bruch EIN!
+
+<br />
+
+= Brucheinstellungen Panel =
+(im Register "Eigenschaften-Editor")
+<br /> Hinweis: Im Allgemeinen werden viele Einstellungen am besten mit dem Experimentieren mit ihnen und Kombinationen verwendet, um die gewünschten Ergebnisse zu finden.
+
+== Voreinstellungen ==
+Sie können alle Einstellungen für Fracture Settings, Fracture Constraint Settings und Fracture Utilities in Presets speichern. Nachdem Sie ein bestehendes Preset ausgewählt haben, müssen Sie Fracture nachträglich ausführen, um die geänderten Einstellungen anzuwenden.
  
-It will show an error message if you attempt to select a preset prior to adding one first.
-Here the same rule about being on frame 1 or the start frame of rigid body cache applies too. The fracturing will not be executed otherwise.<br /> 
-Due to problems/crashes with fractures on different frames this restriction was necessary to implement.
+Es wird eine Fehlermeldung angezeigt, wenn Sie versuchen, eine Voreinstellung vor dem Hinzufügen eines ersten zu wählen.
+Hier gilt auch die gleiche Regel über das Sein auf Rahmen 1 oder der Startrahmen des starren Körper-Cache gilt auch. Das Bruch wird nicht anders ausgeführt. <br />
+Aufgrund von Problemen / Abstürzen mit Frakturen auf verschiedenen Frames war diese Einschränkung notwendig, um zu implementieren.
 
-==Fracture Mode==
-Prefractured - Fracture the mesh once prior to the simulation<br />
-External(WIP) - Pack external mesh objects as islands and constraints into the modifier<br />
-Dynamic(WIP) - Fracture the mesh dynamically during the simulation
+== Bruchmodus ==
+Vorgebrochen - Bruch das Mesh einmal vor der Simulation <br />
+Extern (WIP) - Packen Sie externe Mesh-Objekte als Inseln und Einschränkungen in den Modifikator <br />
+Dynamic (WIP) - Fragment das Netz dynamisch während der Simulation
 
-==Fracture Algorithm Brief Explanation== 
-<b>Voronoi</b> is the base method everywhere.  It decomposes the object Bounding Box via the voro++ library to the given Shard Count when in Uniform mode under Fracture Point Source in Advanced Fracture Settings. You have two main possibilities to get shards of actual geometry: Boolean and Bisect.
+== Bruchalgorithmus Kurze Erläuterung ==
+<b> Voronoi </b> ist die Basismethode überall. Es zerlegt die Objekt-Bounding Box über die voro ++ -Bibliothek zu der gegebenen Shard Count, wenn im Uniform-Modus unter Fracture Point Source in Advanced Fracture Settings. Sie haben zwei Hauptmöglichkeiten, um Scherben der tatsächlichen Geometrie zu bekommen: Boolean und Bisect.
 
-<b>Boolean</b>(default) is good for closed shapes, but can throw errors, making the result unusable, but all inner faces will be closed.
-For Boolean make sure you have water tight meshes, also if you have small meshes, scale up in edit mode and scale down in object mode again, so the internal mesh is big enough to avoid float inaccuracies. When size becomes too small, boolean errors occur likely.
+<b> Boolean </b> (Standard) ist gut für geschlossene Formen, kann aber Fehler werfen, wodurch das Ergebnis unbrauchbar wird, aber alle inneren Gesichter werden geschlossen.
+Für Boolean stellen Sie sicher, dass Sie wasserdichte Maschen haben, auch wenn Sie kleine Meshes haben, im Editiermodus skalieren und im Objektmodus wieder abbauen, so dass das interne Mesh groß genug ist, um Float-Ungenauigkeiten zu vermeiden. Wenn die Größe zu klein wird, treten boolesche Fehler wahrscheinlich auf.
 
-<b>Fractal Boolean</b> voronoi cells are used for a boolean intersect with the original geometry. It technically does not use voronoi but only cutter planes which are not deviated from the cells.  Smaller shards do not work well with it(the particle system).  For smaller shards it is better to use Voronoi + Boolean or Voronoi + Bisect.
+<b> Fractal Boolean </b> voronoi Zellen werden für eine boolesche Überschneidung mit der ursprünglichen Geometrie verwendet. Es wird technisch nicht voronoi verwendet, sondern nur Cutter-Ebenen, die nicht von den Zellen abweichen. Kleinere Scherben funktionieren nicht gut (das Partikelsystem). Für kleinere Scherben ist es besser, Voronoi + Boolean oder Voronoi + Bisect zu benutzen.
 
-<b>Bisect</b> comes from blender and means cutting the mesh in halves along cell faces (as planes), always keeping the inner part and cutting away the next half with the next face and so on, until a piece in the shape of the cell is cut out. It does not fill the inner faces so you have to use Bisect + Fill for this.  But beware, it is not as reliable as boolean, leaving many faces open.  Bisect is good for open shapes, but with many cells it can be slow but it does create exactly shaped shards.
+<b> Bisect </b> kommt aus dem Mixer und schneidet das Gitter in Hälften entlang der Zelle (als Ebenen), hält immer den inneren Teil und schneidet die nächste Hälfte mit dem nächsten Gesicht und so weiter ab, bis ein Stück in der Form der Zelle ist ausgeschnitten. Es füllt nicht die inneren Gesichter, also musst du Bisect + Fill dafür benutzen. Aber Vorsicht, es ist nicht so zuverlässig wie boolean, so dass viele Gesichter offen sind. Bisect ist gut für offene Formen, aber mit vielen Zellen kann es langsam sein, aber es macht genau geformte Scherben.
  
-<b>Bisect + Fill</b> is good for closed shapes on simple geometry too. It will not error out as boolean, but it may omit inner faces.
-Bisect fill uses a Blender internal fill algorithm triangle fill, which is very unreliable in some cases.
+<b> Bisect + Fill </b> ist gut für geschlossene Formen auf einfache Geometrie auch. Es wird nicht als boolescher Fehler ausfallen, aber es kann innerliche Gesichter auslassen.
+Bisect-Füllung verwendet einen Blender-internen Fill-Algorithmus-Dreieck-Füllung, was in einigen Fällen sehr unzuverlässig ist.
 
-<b>Fast Bisect</b> reduces the number of bisections per cell to 1 face. It creates differently shaped shards by halving the remainders again and again, being faster than conventional bisect because those mesh remainders get smaller each time.  Fast bisect is good for open shapes it cannot fill. Shapes look different but also good patterns might be achieved (tested in uniform mode only up to now) and it is significantly faster than conventional bisect.  Note: Smaller shards do not work with it such as from the particle system.
+<b> Fast Bisect </b> reduziert die Anzahl der Bisektionen pro Zelle auf 1 Gesicht. Es schafft unterschiedlich geformte Scherben, indem sie die Reste immer wieder halbieren, schneller als herkömmliche Halbachse, weil diese Maschenreste jedes Mal kleiner werden. Fast bisect ist gut für offene Formen, die es nicht füllen kann. Shapes sehen anders aus, aber auch gute Muster konnten erreicht werden (bisher im Uniform-Modus getestet) und es ist deutlich schneller als herkömmliche Bisect. Hinweis: Kleinere Scherben funktionieren nicht mit dem Partikelsystem.
 
-NOTE: Fractal Boolean and Fast Bisect only work with Uniform Point Source set. Other sources are ignored. 
+HINWEIS: Fractal Boolean und Fast Bisect arbeiten nur mit Uniform Point Source Set. Andere Quellen werden ignoriert.
 
-<b>Selections are:</b><br />
-Voronoi + Fractal Boolean - Use voronoi and boolean intersection with fractally subdivided cells<br />
-Voronoi + Bisect - Use voronoi and mesh bisect as fracture algorithm, do not fill cut faces<br />
-Voronoi + Bisect + Fill - Use voronoi and mesh bisect as fracture algorithm, fill cut faces<br />
-Voronoi + Boolean (default) - Use voronoi and boolean intersection as fracture algorithm<br />
-Fast Bisect + Fill - Use the faster but different bisect algorithm and fill cut faces<br />
-Fast Bisect - Use a faster but more inaccurate bisect algorithm, also creates uglier shards<br />
+<b> Auswahlmöglichkeiten sind: </b> <br />
+Voronoi + Fractal Boolean - Benutze Voronoi und Boolesche Kreuzung mit fraktal unterteilten Zellen <br />
+Voronoi + Bisect - Verwenden Sie Voronoi und Mesh Bisect als Fraktur Algorithmus, nicht füllen Schnitt Gesichter <br />
+Voronoi + Bisect + Fill - Verwenden Sie voronoi und Mesh Bisect als Frakturalgorithmus, füllen Sie geschnittene Gesichter <br />
+Voronoi + Boolean (Standard) - Voronoi und Boolesche Kreuzung als Bruchalgorithmus verwenden <br />
+Schneller Bisect + Fill - Benutze den schnelleren, aber unterschiedlichen Bisect-Algorithmus und fülle Schnittflächen <br />
+Fast Bisect - Verwenden Sie einen schnelleren, aber mehr ungenaue Bisect-Algorithmus, schafft auch hässlichere Shards <br />
 
-<b>Boolean Solver:</b> Selections are Carve or BMesh. Carve can handle some non-manifold cases a bit better.  BMesh is sometimes faster but it can have issues with some meshes.  It is best to experiment and see which one works better for different meshes.
+<b> Boolean Solver: </b> Selektionen sind Carve oder BMesh. Carve kann einige nicht verteilte Fälle etwas besser behandeln. BMesh ist manchmal schneller, aber es kann Probleme mit einigen Meshes haben. Es ist am besten zu experimentieren und zu sehen, was man besser für verschiedene Maschen macht.
 
-<b>Shard Count:</b> For uniform mode only. It determines how many raw voronoi cells are created over the bounding box. Actual shard count may be lower due to intersection with actual geometry.
+<b> Shard Count: </b> Nur für einheitlichen Modus. Es bestimmt, wie viele rohe voronoi Zellen über die Begrenzungsbox erstellt werden. Die tatsächliche Scherbezählung kann aufgrund der Kreuzung mit der tatsächlichen Geometrie niedriger sein.
 
-<b>Cluster Count:</b> It is recommended to set it to 0 to disable it. It is used it conjunction with Constraints and determines how many "bigger" compounds are made from the actual shards. This is an attempt to fake a two level breaking behavior via constraints and stronger "inner" thresholds ONLY.
+<b> Clusterzählung: </b> Es wird empfohlen, es auf 0 zu setzen, um es zu deaktivieren. Es wird es in Verbindung mit Constraints verwendet und bestimmt, wie viele "größere" Verbindungen aus den tatsächlichen Scherben hergestellt werden. Dies ist ein Versuch, ein zweistufiges Breaking-Verhalten über Einschränkungen und stärkere "innere" Schwellen NUR zu fälschen.
 
-<b>Seed:</b> For uniform mode only. This is the starting seed for creating a random uniform point cloud over the bounding box. Varying it gives different pattern looks, which remain uniformly distributed though. It also affects the cluster build up, which is only visible in simulation.
-
-<b>Cluster Group:</b> Centroids of objects in this group will determine where cluster centers will be.
-
-<b>Constraint Type:</b> Type of rigid body constraint between shards and inside clusters.  Default is Fixed, glue rigid bodies together.<br />
-Note: there are several constraint types from the Bullet physics integration.<br />
-See Understanding Constraints section below.
-
-<b>Cluster Constraint Type:</b> Type of rigid body constrain between clusters, default fixed, glue rigid bodies together. Note: there are several and they are from Bullet.
-
-<b>Inner Material:</b> Material of added shard inner faces.
-
-<b>Inner UV Map:</b> Texture map of added shard inner faces.
-
-NOTE: when Fracture Modifier is first added to an object two materials are automatically created.  One with the name of the object and a second with the name of the object plus "_Inner" added as a suffix.
-
-<b>Split Shards to Islands:</b> In case there are multiple visually disconnected pieces per shard, those will be decompose further to their single parts. Use this to avoid shards which look like being connected over the air. When changing this option, make sure to execute fracture again prior to saving the file! Otherwise the mesh could be messed up. (TODO)
-
-<b>Auto Execute:</b> Mainly used for helper objects and Text objects. It automatically fractures when the helper object contacts the mesh or as text letters are typed.  Caution: when used for text this can be slow and buggy.
-
-<b>Smooth Inner Faces:</b> Sets inner faces of fractured object shards to smooth shading. Note: It requires a refracture if selected after Execute Fracture is clicked. 
-
-<b>Splinter X | Y | Z:</b> Sets global direction(s) of splinters. Shift+Click+Drag to select multiple directions.
-
-<b>Splinter Length:</b> Length of splinters in Blender units.
-
-<b>Advanced Fracture Settings:</b> See below.
-
-<b>Execute Fracture:</b> Triggers the fracture process. This is necessary after ALL changes not related to constraints only (algorithm, source, percentage, seed, cluster count). It must be done while on the cache start frame otherwise nothing will happen. 
-<br />NOTE: After adding a modifier to an object, make sure to actually Execute Fracture once prior to saving the file! Otherwise unexpected behavior could occur.
-
-<b>Threaded:</b>(WIP) Executes in multiple threads for added speed. This is good for Prefractured mode and Algorithm Methods Voronoi + Boolean, Voronoi + Bisect(+ fill) but not for Fast Bisect(+ Fill) or Fractal Boolean.  It can be faster up to 6-7 times with 8 physical cores(16 threads.)
+<b> Samen: </b> Nur für einheitlichen Modus. Dies ist der Ausgangssaat für die Schaffung einer zufälligen einheitlichen Punktwolke über der Begrenzungsbox. Variieren Sie es geben
 
 <br />
 
-=Advanced Fracture Settings=
-===Fracture Point Source Modes===
-Here you can change the point source to any combination of the five possibilities. It is recommended to leave it set to "Uniform."  Modes are cumulative. You can select multiple sources. They add up to a combined point cloud.
+= Erweiterte Fraktureinstellungen =
+=== Bruchpunkt Quellmodi ===
+Hier können Sie die Punktquelle auf eine beliebige Kombination der fünf Möglichkeiten umstellen. Es wird empfohlen, es auf "Uniform" zu setzen. Modi sind kumulativ. Sie können mehrere Quellen auswählen. Sie addieren sich zu einer kombinierten Punktwolke.
 
-====Own Particles==== 
-Use a particle System of the same object as point cloud source. Only one particle system per object supported. Do not use multiple ones, otherwise the behavior might be undetermined. The number of particles will map to the number of shards over the bounding box. 
-Recommended Particle System settings are: Volume, Random, all particles emitted in 1 Frame. Otherwise there are problems, for example with boolean when emitting from faces, especially when points are very close to the bounding box boundaries.
+==== Eigene Teilchen ====
+Verwenden Sie ein Partikelsystem des gleichen Objekts wie Punktwolkenquelle. Nur ein Partikelsystem pro Objekt unterstützt. Verwenden Sie keine Mehrfachen, sonst könnte das Verhalten unbestimmt sein. Die Anzahl der Teilchen wird auf die Anzahl der Scherben über der Begrenzungsbox abgebildet.
+Empfohlene Particle System-Einstellungen sind: Volume, Random, alle Partikel in 1 Frame emittiert. Ansonsten gibt es Probleme, zum Beispiel mit Booleschen, wenn sie von Gesichtern emittieren, besonders wenn Punkte sehr nahe an den Begrenzungsrahmengrenzen sind.
 
-====Own Vertices==== 
-Each vertex of the object becomes a point in the point cloud. It is recommend to use only on low poly respectively low vertex objects. Can lead to problems too if points get close to bounding box boundaries. 
+==== Eigene Vertices ====
+Jeder Scheitel des Objekts wird zu einem Punkt in der Punktwolke. Es empfiehlt sich, nur bei niedrigen Poly- bzw. Low-Scheitel-Objekten zu verwenden. Kann auch zu Problemen führen, wenn Punkte in der Nähe von Bounding Box Grenzen kommen.
 
-====Extra Particles==== 
-You can create a particle system on another object, with the same recommended settings and add to a helper group. Then you specify this group in Extra Group. This way can get nonuniform fracture. The "Own Particles" mode should nonuniform fracture too, when manipulating the particle system emission via a texture for example.
+==== Extra Partikel ====
+Sie können ein Partikelsystem auf einem anderen Objekt mit den gleichen empfohlenen Einstellungen erstellen und zu einer Helpergruppe hinzufügen. Dann geben Sie diese Gruppe in der Extragruppe an. Auf diese Weise kann ein ungleichmäßiger Bruch entstehen. Der "Eigene Partikel" -Modus sollte auch bei der Manipulation der Partikelsystem-Emission über eine Textur zum Beispiel einen ungleichmäßigen Bruch aufweisen.
 
-====Extra Vertices==== 
-Each vertex of one or more other objects become source points for fracturing. You add those helper objects to a group and specify it as Extra Group. If you have both particles and vertex options selected, you get a combined point cloud. Here also better use low poly objects.
+==== Extra Vertices ====
+Jeder Scheitel eines oder mehrerer Objekte wird zu Quellpunkten für das Brechen. Sie fügen diese Helper-Objekte zu einer Gruppe hinzu und geben sie als Extra-Gruppe an. Wenn Sie sowohl Partikel- als auch Vertex-Optionen ausgewählt haben, erhalten Sie eine kombinierte Punktwolke. Hier auch besser niedrige Polyobjekte verwenden.
 
-====Grease Pencil==== 
-<b>WARNING:</b> highly experimental feature - may crash! DO NOT MOVE object by hand out of "grease pencil drawing area," not even partially!<br /> 
-To experiment with this feature draw points or SHORT lines. Each stroke becomes a point cloud point. Here it helps to limit the total amount of source points with the "Percentage" setting below "Extra Group". With longer strokes you otherwise risk a huge amount of misshaped shards, a long fracturing process and possibly even crashes either in fracture or in the simulation.
+==== Fettbutter ====
+<b> WARNUNG: </b> sehr experimentelles Merkmal - kann abstürzen! NICHT BEWEGEN Sie das Objekt von Hand aus "Fett Bleistift Zeichnung Bereich", nicht einmal teilweise! <br />
+Um mit diesem Feature zu experimentieren, ziehen Sie Punkte oder kürzere Linien. Jeder Strich wird ein Punktwolkenpunkt. Hier hilft es, die Gesamtmenge der Quellpunkte mit der "Prozentsatz" -Einstellung unter "Extra-Gruppe" zu begrenzen. Bei längeren Strichen riskierst du sonst eine riesige Menge an verformten Scherben, ein langer Bruchvorgang und evtl. sogar bei Bruch oder in der Simulation.
 
-Use Greasepencil Edges:(WIP, for testing purpose only for now, currently not combineable with other pointsources.) Use GP lines which are internally converted into cutter planes. <br />
-Note: strokes MUST start and end outside the object which they are drawn on, and works with Greasepencil in OBJECT mode only.
+Verwenden Sie Greasepencil Edges: (WIP, nur für Testzwecke nur für jetzt, derzeit nicht mit anderen Pointources kombinierbar.) Verwenden Sie GP-Linien, die intern in Cutter-Ebenen umgewandelt werden. <br />
+Hinweis: Striche müssen außerhalb des Objekts beginnen und enden, auf das sie gezogen werden, und arbeitet nur mit dem Greasepencil im OBJECT-Modus.
 
-Greasepencil Offset: "Length" of the cutterplane, must exceed object to be cut.<br /> 
-Greasepencil Decimate (reduces amount of points in a stroke being used for the cutter plane.<br />
-Cutter Axis: currently it can only project the line to a plane along global X, Y, or Z.
+Greasepencil Offset: "Länge" der Cutterplane, muss das zu schneidende Objekt überschreiten. <br />
+Greasepencil Decimate (reduziert die Anzahl der Punkte in einem Schlaganfall für die Cutter-Ebene verwendet. <br />
+Cutter Axis: momentan kann es nur die Linie zu einer Ebene entlang globaler X, Y oder Z projizieren.
 
-====Uniform====
-(default)Use a random generated point cloud generated over the whole bounding box.
+==== Uniform ====
+(Standard) Verwenden Sie eine zufällige generierte Punktwolke, die über die gesamte Begrenzungsbox erzeugt wird.
 
-====Additional Advanced Settings====
+==== Zusätzliche erweiterte Einstellungen ====
+<b> Extra-Gruppe: </b> Geben Sie eine zusätzliche Partikelsystemgruppe oder eine zusätzliche Vertexgruppe aus einem anderen Objekt an. Dies muss in eine Gruppe gesetzt werden und dann kann es mit dem Modifikator verbunden werden, um weitere Details hinzuzufügen. Siehe auch Extra Partikel, zusätzliche Vertices und zusätzliche Workflow-Informationen.
 
-<b>Extra Group:</b> Specify an extra particle system group or extra vertex group from another object. This must be put into a group and then it can be linked to the modifier to add further detail.  See also Extra Particles, Extra Vertices and Additional Workflow Information sections.
+<b> Unterobjektgruppe: </b> Verbinden Sie mehrere abgeleitete Maschen verschiedener Objekte mit unterschiedlichen Modifikatoreinstellungen zusammen in einem "Kollektor" -Objekt. Siehe auch Abschnitt Advanced Workflow Information.
 
-<b>Sub Object Group:</b> Join multiple derived meshes of different objects with different modifier settings together in a "collector" object.  See also Advanced Workflow Information section.
+<b> Cutter Group: </b> Ein Satz von Objekten, um boolesche Schnitte zu machen.
 
-<b>Cutter Group:</b> A set of objects to make boolean cuts against.
+<b> Verwenden Sie Partikel-Geburtskoordinaten: </b> Geburts- oder simulierte Zustands-Partikelkoordinaten verwenden.
 
-<b>Use Particle Birth Coordinates:</b> Use birth or simulated state particle coordinates.
+<b> Prozentsatz: </b> Prozentsatz der Summe der Punkte aller ausgewählten Punktquellen, die tatsächlich für Frakturen verwendet werden sollen.
 
-<b>Percentage:</b> Percentage of the sum of points of all selected point sources to actually use for fracture.
+<b> Threshold Vertex Group: </b> Vertex Gruppenname für die Definition gewichteter Schwellenwerte auf verschiedenen Mesh-Parts. Sie können Lackgewichte auf dem Mesh PRIOR bezahlen, um mit Modifier zu brechen. Dies ist bei aktiviertem Modifikator nicht sichtbar. (TODO) Die Gewichte reduzieren den vorgegebenen Schwellenwert durch Multiplikation von Gewichten und Schwellenwerten. Ein Gewicht bei 1 bedeutet volle Schwelle, je niedriger man erhält, desto niedriger ist die Schwelle. (0 -> unbestimmt, TEST ...)
 
-<b>Threshold Vertex Group:</b> Vertex group name for defining weighted thresholds on different mesh parts.  You can weight paint weights on the mesh PRIOR to fracture with modifier. This will not be visible with enabled modifier. (TODO) The weights reduce the given threshold by multiplying weights and threshold. A weight at 1 means full threshold, the lower you get, the lower the threshold will be. (0 -> undetermined ?, TEST...)
+<b> Passive Vertex-Gruppe: </b> Vertex-Gruppenname für die Definition von passiven Mesh-Teilen. Es wird während der starren Körpersimulation statisch bleiben. Sie können passive Teile mit hohen Gewichten analog zu den Schwellen malen. Es wird empfohlen, Gewicht von 1 zu verwenden, da das Gesamtgewicht aller Scheitelpunkte eines Scherbens> 0,5 sein muss, um die Scherbe passiv zu setzen, also bleibt es während der Sim. Die Objekte können entweder aktiv oder passiv sein, da ist nichts dazwischen.
 
-<b>Passive Vertex Group:</b> Vertex group name for defining passive mesh parts.  It will remain static during rigid body simulation. You can paint passive parts with high weights analogous to the thresholds. It is recommended to use weight of 1, because the total weight of all vertices of a shard must be > 0.5 to set the shard passive, so it remains static during sim. The objects can either be active or passive, there is nothing in between.
+<b> Inner Vertex Group: </b> Vertex-Gruppenname für die Definition von inneren Ecken. Wird Ecken der inneren Gesichter enthalten. Wird nur für Boolean und Bisect + Fill verwendet.
 
-<b>Inner Vertex Group:</b> Vertex group name for defining inner vertices. Will contain vertices of inner faces. Used for Boolean and Bisect + Fill only.
-
-<b>Inner Crease:</b> generate a crease at edges of inner faces. During a physics simulation inner crease forms hard edges for smooth inner faces. This works well with microdisplacement setup.  It may be used in conjunction with the Sub Surface modifier for better control of the Catmull-Clark subsurface to keep straight edges without needing to fallback to simple subsurface.<br />
-(EG: useful when having microdisplacement, which is controlled via subdiv modifier and texture, after the FM)
+<b> Innerer Falten: </b> eine Falte an den Kanten der inneren Gesichter erzeugen. Während einer Physik-Simulation bildet die innere Falte harte Kanten für glatte Innenflächen. Das funktioniert gut mit Microdisplacement Setup. Es kann in Verbindung mit dem Sub-Oberflächen-Modifikator verwendet werden, um eine bessere Kontrolle des Catmull-Clark-Untergrundes zu ermöglichen, um gerade Kanten zu halten, ohne dass er auf einen einfachen Untergrund zurückfallen muss. <br />
+(EG: nützlich bei Mikroverlagerung, die über Subdiv Modifier und Textur nach der FM gesteuert wird)
 
 <br />
 
-=Fracture Constraint Settings Panel for Simulations=
+= Fracture Constraint Settings Panel für Simulationen =
 
 [[File:User_Fracture_Documentation_Fracture_Simulation.png|right|287px|Fracture Simulation]]
-<b>Note:</b> The Fracture Modifier branch has an advanced constraint management system far superior than the default one in blender.  That combined with Bullet Physics simulations provides a superior level of creative control in shard management and destruction creation.  See the Understanding Constraints section below for more detailed information on settings and uses.
+<b> Hinweis: </b> Der Fracture Modifier-Zweig verfügt über ein fortgeschrittenes Constraint-Management-System, das weit überlegen ist als das Standard-Mixer. Das kombiniert mit Bullet Physics Simulationen bietet eine überlegene Ebene der kreativen Kontrolle in Shard Management und Zerstörung Schaffung. Weitere Informationen zu den Einstellungen und Verwendungen finden Sie im Abschnitt "Grundlegendes verstehen".
 
-<b>Use Constraints:</b> When activated it generates a powerful Bullet based custom constraints system. It instantly creates constraints between all shards of the object. In general you can specify a searching radius or contact distance in Blender units and limit the shard count(per island) to reduce the number of constraints and speed up the simulation. 
+<b> Verwenden Sie Constraints: </b> Wenn aktiviert, erzeugt es ein leistungsstarkes Bullet-basiertes Custom Constraints System. Es schafft sofort Zwänge zwischen allen Scherben des Objekts. Im Allgemeinen können Sie einen Suchradius oder Kontaktabstand in Blender-Einheiten angeben und die Scherbezählung (pro Insel) beschränken, um die Anzahl der Einschränkungen zu reduzieren und die Simulation zu beschleunigen.
 
-<b>Breakable:</b> Constraints can be broken if it receives an impulse above the threshold.
+<b> Breakable: </b> Constraints können gebrochen werden, wenn sie einen Impuls über dem Schwellenwert erhält.
 
-<b>Constrained Collision:</b> Let constrained shards collide with each other.  The constrained objects whose constraints are still intact will not collide with each other. EG: faking selfcollisions when using point constraints and Automerge to fake cloth. See Understanding Constraints section below for more detailed information. 
+<b> Beschränkte Kollision: </b> Lassen Sie beschränkte Scherben miteinander kollidieren. Die eingeschränkten Objekte, deren Einschränkungen noch intakt sind, werden nicht miteinander kollidieren. EG: Fälschungen bei der Verwendung von Punktbegrenzungen und Automerge zum Fake Tuch. Weitere Informationen finden Sie unter Grundlegendes zu Constraints.
 
-<b>Use Compounds:</b> This is an experimental setting that uses Bullet method compounds instead of fixed constraints.  Supposedly this is faster with less wobbling.
+<b> Verwenden Sie Compounds: </b> Dies ist eine experimentelle Einstellung, die Bullet-Methoden-Compounds anstelle von festen Constraints verwendet. Angeblich ist das mit weniger wackelnder schneller
 
-<b>Constraint Method:</b>
-<br />Vertex - Build constraints based on distances between vertices.  Note: use lower values here. It almost always connects only adjacent neighbors using the
-distance between the vertices of nearby shards.
-<br />Centroid - Build constraints based on distances between centroids. Islands can connect farther away than the adjacent ones to get more stiff objects.
-<br />So with one the distance is between centroids and with the other the distance is between vertices.  
+<b> Einschränkungsmethode: </b>
+<br /> Vertex - Erstellen Sie Einschränkungen basierend auf Abständen zwischen Vertices. Hinweis: Verwenden Sie hier niedrigere Werte. Es verbindet fast immer nur benachbarte Nachbarn mit dem
+Abstand zwischen den Eckpunkten der nahe gelegenen Scherben
+<br /> Centroid - Erstellen Sie Einschränkungen auf Distanzen zwischen den Zentroiden. Inseln können weiter weg als die angrenzenden, um mehr steife Objekte zu bekommen.
+<br /> Also mit einem ist der Abstand zwischen den Schwerpunkten und mit dem anderen ist der Abstand zwischen den Scheiteln.
 
-<b>Constraint limit, per Meshisland:</b> Maximum number of neighbors being searched per mesh island during constraint creation, 0 or unlimited.
+<b> Einschränkungsgrenze pro Meshisland: </b> Maximale Anzahl von Nachbarn, die pro Mesh-Insel während der Constraint-Erstellung gesucht werden, 0 oder unbegrenzt.
 
-<b>Search Radius:</b> Limit search radius up to which 2 mesh islands are being connected, 0 for entire bounding box. Note: This is an older setting that limits the amount of maximum connections per mesh island and the radius in which shards are being searched to connect with the current shard being looked at. 
+<b> Suchradius: </b> Suchradius einschränken bis zu welchen 2 Mesh-Inseln verbunden sind, 0 für die gesamte Begrenzungsbox. Hinweis: Dies ist eine ältere Einstellung, die die Anzahl der maximalen Verbindungen pro Mesh-Insel und den Radius begrenzt, in dem die Shards gesucht werden, um mit dem aktuellen Shard zu betrachten.
 
-<b>Constraint Breaking Settings -</b><br />
-<b>Threshold:</b> It determines what force must affect the constraint in order to break it. higher threshold means it will need more force to break the constraint, It is recommended lower those thresholds when using the default mass or to increase mass to get more easy breaks. This avoids "rubber" behavior which occurs on high thresholds low masses and "long range" constraints mostly.
+<b> Einschränkungseinstellungen - </b> <br />
+<b> Threshold: </b> Es bestimmt, welche Kraft die Einschränkung beeinflussen muss, um sie zu brechen. höhere Schwelle bedeutet, dass es mehr Kraft braucht, um die Einschränkung zu brechen. Es empfiehlt sich, diese Schwellenwerte bei der Verwendung der Standardmasse zu verringern oder die Masse zu erhöhen, um leichtere Pausen zu erhalten. Dies vermeidet das "Gummi" -Verhalten, das bei hohen Schwellenwerten niedrige Massen und "lange Reichweite" Einschränkungen vor allem auftritt.
 
-<b>Cluster Breaking Threshold:</b> A high default value applied to members INSIDE a cluster to fake secondary fracture. Tertiary and higher levels are not supported, as you cannot cluster clusters.
+<b> Cluster Breaking Threshold: </b> Ein hoher Standardwert, der auf Mitglieder in einem Cluster angewendet wird, um die Sekundärfraktur zu fälschen. Tertiäre und höhere Ebenen werden nicht unterstützt, da man Cluster nicht gruppieren kann.
 
-<b>Constraint Special Breaking Settings -</b><br />
-<b>Percentage:</b> If the given percentage of the constraints per island is broken, then ALL remaining constraints of this island will break automatically. Setting it to 0 disables it. Set to high values to completely break all constraints which might dangle around after collision, lower values makes the object break more easily, 25 means if only 25% are broken, break the rest too for example.
+<b> Einschränkung Spezielle Breaking Settings - </b> <br />
+<b> Prozentsatz: </b> Wenn der angegebene Prozentsatz der Einschränkungen pro Insel gebrochen ist, dann werden alle verbleibenden Einschränkungen dieser Insel automatisch brechen. Wenn Sie es auf 0 setzen, wird es deaktiviert. Setzen Sie auf hohe Werte, um alle Einschränkungen vollständig zu brechen, die nach Kollision umhergehen könnten, niedrigere Werte machen das Objekt leichter, 25 bedeutet, wenn nur 25% gebrochen sind, zerbrechen auch den Rest.
 
-<b>Angle:</b> If an angle greater than x degrees occur between two islands, break the according constraint. This restricts bending behavior of constraints, which will break then when bent too much.
+<b> Winkel: </b> Wenn ein Winkel größer als x Grad zwischen zwei Inseln auftritt, brechen Sie die entsprechende Einschränkung. Dies beschränkt das Biegeverhalten von Zwängen, die dann brechen, wenn es zu viel gebeugt wird.
 
-<b>Distance:</b> If a distance (blender units) greater than x is between two islands, break the according constraint, This restricts stretching behavior of constraints, which will break when stretched too much.
+<b> Distanz: </b> Wenn ein Abstand (Mischereinheiten) größer als x zwischen zwei Inseln ist, brechen Sie die entsprechende Einschränkung, Dies beschränkt das Streckverhalten von Einschränkungen, die brechen, wenn es zu viel gedehnt wird.
  
-NOTE: all 3 settings are now also available for clusters.
-<br />The cluster angle applies only between shards which belong to different clusters. This means the object falls apart into its clusters. If you set a low value for the regular angle, it will fall apart even further.
-<br />So if you have a cluster angle 0.1 and angle 2 or 3 your object will likely break down to its clusters first.
-<br />The same logic applies for distance and percentage.
+HINWEIS: Alle 3 Einstellungen sind jetzt auch für Cluster verfügbar.
+Der Clusterwinkel gilt nur zwischen Scherben, die zu verschiedenen Clustern gehören. Das bedeutet, dass das Objekt in seine Cluster zerfällt. Wenn Sie einen niedrigen Wert für den regulären Winkel setzen, wird es noch auseinanderfallen.
+<br /> Also, wenn Sie einen Cluster Winkel 0.1 und Winkel 2 oder 3 Ihr Objekt wird wahrscheinlich brechen, um seine Cluster zuerst.
+<br /> Die gleiche Logik gilt für Distanz und Prozentsatz.
 
-<b>Weighted Percentage:</b> Modify breaking percentage by threshold weights.
-<br /><b>Weighted Angle:</b> Modify breaking angle by threshold weights.
-<br /><b>Weighted Distance:</b> Modify breaking distance by threshold weights.
+<b> Gewichteter Prozentsatz: </b> Ändern des Bruchanteils durch Schwellengewichte.
+<br /> <b> Gewichteter Winkel: </b> Ändern des Bruchwinkels durch Schwellengewichte.
+<br /> <b> Gewichteter Abstand: </b> Ändern des Bruchabstandes durch Schwellengewichte.
 
-<b>Solver Iterations:</b> This applies for the entire fracture object and overrides the scene setting. Higher iterations will reduce wobbling/rubber behavior, but simulation gets slower.
+<b> Solver Iterations: </b> Dies gilt für das gesamte Frakturobjekt und überschreibt die Szeneneinstellung. Höhere Iterationen reduzieren das Wackeln / Gummi-Verhalten, aber die Simulation wird langsamer.
 
-<b>Cluster Solver Iterations Override:</b> This slider overrides the solver iterations for constraints which are between shards and belong to different clusters.  It was originally supposed to emphasize breaking to clusters as well when using thresholds mainly.
+<b> Cluster Solver Iterations Override: </b> Dieser Schieberegler überschreibt die Solver-Iterationen für Zwänge, die zwischen Scherben liegen und zu verschiedenen Clustern gehören. Es sollte ursprünglich betont werden, dass es auch bei der Verwendung von Schwellenwerten zu Clustern geht.
 
-<b>Use Mass Dependent Thresholds:</b> Reduce the given Threshold value according to ratio of the current shard to a shard with maximum mass.  Like a shard with mass x has Threshold 100, mass x/2 has 50 then. This allows constraints to break more easily without changing the masses and avoids rubber behavior.
+<b> Massenabhängige Schwellenwerte verwenden: </b> Den angegebenen Schwellenwert entsprechend dem Verhältnis der aktuellen Scherbe zu einer Scherbe mit maximaler Masse reduzieren. Wie eine Scherbe mit Masse x hat Schwelle 100, Masse x / 2 hat dann 50. Dadurch können Beschränkungen leichter brechen, ohne die Massen zu verändern und das Gummi-Verhalten zu vermeiden.
 
-<b>Constraint Deform Settings -</b>(See Understanding Constraints below)
-<br /><b>Deforming Angle:</b> Angle in degrees above which constraint should keep its deformation.
-<br /><b>Deforming Distance:</b> Distance above which constraint should keep its deformation.
-<br /><b>Cluster Deforming Angle:</b> Angle in degrees above which cluster constraint should keep its deformation.
-<br /><b>Cluster Deforming Distance:</b> Distance above which cluster constraint should keep its deformation.
-<br /><b>Weighted Deforming Angle:</b> Modify deform angle by threshold weights.
-<br /><b>Weighted Deforming Distance:</b> Modify deform distance by threshold weights.
-<br /><b>Deforming Weakening Factor:</b> Multiplies the breaking threshold in each iteration with 1.0 factor in order to weaken it at deform, 0 to disable.
+<b> Constraint Deform Settings - </b> (Siehe Understanding Constraints unten)
+<br /> <b> Deforming Angle: </b> Winkel in Grad oberhalb welcher Einschränkung seine Verformung beibehalten sollte.
+<br /> <b> Deforming Distance: </b> Abstand oberhalb welcher Einschränkung seine Verformung beibehalten sollte.
+<br /> <b> Cluster Deforming Angle: </b> Winkel in Grad, über dem Cluster-Constraint seine Deformation beibehalten sollte.
+<br /> <b> Cluster Deforming Distance: </b> Abstand oberhalb welcher Cluster-Constraint seine Deformation beibehalten sollte.
+<br /> <b> Gewichteter deformierender Winkel: </b> Ändern des Verformungswinkels durch Schwellengewichte.
+<br /> <b> Gewichteter deformierender Abstand: </b> Änderungsform durch Schwellengewichte ändern.
+<br /> <b> Deformierender Schwächungsfaktor: </b> Multipliziert die Bruchschwelle in jeder Iteration mit 1,0 Faktor, um sie bei Deform zu schwächen, 0 zu deaktivieren.
 
 <br />
 
-=Fracture Utilities Panel=
-(See Understanding Fracture Utilities below also)
+= Fracture Utilities Panel =
+(Siehe Grundlegendes zu Fracture Utilities unten)
 
-<b>Filter Group:</b> Basically this is a group of objects (only spheres work well. Only use a simple radius here) which reveal "Autohide" cracks on the fly interactively.  So if you scale such an object, you could fake appearing cracks. But this is barely noticeable in viewport(only with Automerge and show "Wire" on solid objects.) But when rendered it is much more noticeable.
+<b> Filtergruppe: </b> Grundsätzlich handelt es sich hierbei um eine Gruppe von Objekten (nur Sphären funktionieren gut. Verwenden Sie hier nur einen einfachen Radius), der "Autohide" interaktive Risse zeigt. Also, wenn du ein solches Objekt skalierst, könntest du Fehler machen. Aber das ist im Viewport kaum zu spüren (nur bei Automerge und Show "Wire" auf festen Objekten). Aber wenn es gerendert wird, ist es viel spürbarer.
 
-<b>Autohide Distance:</b> Distance between faces below which both opposing faces should be hidden.
+<b> Autohide Entfernung: </b> Abstand zwischen den Gesichtern, unter denen beide gegenüberliegenden Gesichter ausgeblendet werden sollen.
 
-<b>Automerge Distance:</b> Distance between faces below which vertices of both faces should be merged.  
-<br />Note: Use the above two settings with Smooth Objects and Fix Normals to better hide cracks in glass for example.  There is a performance cost when using this. Fix Normals should be deactivated if using high Automerge Distances and Voronoi + Bisect.  For more information see the Advanced Workflow Information section below.
+<b> Automerge Distanz: </b> Abstand zwischen den Flächen, unter denen die Ecken der beiden Gesichter verschmolzen werden sollen.
+<br /> Hinweis: Verwenden Sie die oben genannten zwei Einstellungen mit Smooth Objects und Fix Normals, um besser Risse in Glas zum Beispiel zu verbergen. Es gibt eine Leistung Kosten bei der Verwendung dieser. Fix Normalen sollten deaktiviert werden, wenn mit hohen Automerge Distanzen und Voronoi + Bisect. Weitere Informationen finden Sie im Abschnitt "Erweiterte Workflow-Informationen" unten.
 
-<b>Keep Distortion:</b> Whether or not to make the distortion on torn merged shards persistent. Use to make more interesting crack edges.
+<b> Halten Sie Verzerrung: </b> Ob die Verzerrung auf zerrissenen verschmutzten Scherben beharrlich ist oder nicht. Verwenden Sie, um interessantere Risskanten zu machen.
 
-<b>Perform Merge:</b> Whether or not to actually weld the prepared Automerged geometry. It actually welds the geometry to get smoother looking normals when Shade Smooth is enabled(which should be used for Fake Cloth, Subsurface and Smooth modifiers also.)
+<b> Führen Sie Merge aus: </b> Ob die vorbereitete Automerged-Geometrie tatsächlich geschweißt werden soll oder nicht. Es schweißt tatsächlich die Geometrie, um glatter aussehende Normalen zu erhalten, wenn Shade Smooth aktiviert ist (was auch für Fake Cloth, Subsurface und Smooth Modifikatoren verwendet werden soll.)
 
-<b>Fix Normals:</b>(WIP) This copies the closest normals from the source object to the fractured object and hides cracks better on smooth objects.
-<br />Note: works correctly only if there are no modifiers before the Fracture Modifier! It should be deactivated if using high Automerge Distances and Voronoi + Bisect.
+<b> Fix Normals: </b> (WIP) Dies kopiert die nächsten Normalen vom Quellobjekt zum Bruchobjekt und verbirgt Risse besser auf glatten Objekten.
+<br /> Hinweis: funktioniert nur richtig, wenn es keine Modifikatoren vor dem Bruchmodifikator gibt! Es sollte deaktiviert werden, wenn man hohe Automerge-Entfernungen und Voronoi + Bisect verwendet.
 
-<b>Normals Search Radius:</b> Radius in which to search for valid normals.  Higher numbers slow the process down.  See also Settings Suggestions section below.
+<b> Normale Suchradius: </b> Radius, in dem nach gültigen Normalen gesucht wird. Höhere Zahlen verlangsamen den Prozess. Siehe auch Einstellungen Vorschläge unten.
   
-<b>Convert to Objects:</b> Converts the modifier shards and constraints to single rigid body objects and single constraint objects. This might consume much memory on many shards, as you need to create many individual objects in Blender which is slow and resource-intensive.  The resulting shards can then be used like any other object.
+<b> Konvertieren in Objekte: </b> Konvertiert die Modifikator-Shards und Constraints in einzelne starre Body-Objekte und einzelne Constraint-Objekte. Dies könnte viel Gedächtnis auf viele Scherben verbrauchen, da man viele einzelne Objekte in Blender schaffen muss, die langsam und ressourcenintensiv ist. Die daraus resultierenden Scherben können dann wie jedes andere Objekt verwendet werden.
 
-<b>Convert to Keyframed Objects:</b> Converts the Rigid Body modifier shards to keyframed objects.  This is useful when exporting out of the Fracture Modifier branch to an Official Blender Release or to other 3D applications and game engine platforms.
+<b> Konvertieren in Keyframed-Objekte: </b> Konvertiert die Rigid-Body-Modifikator-Shards in Keyframed-Objekte. Dies ist nützlich, wenn Sie den Fraktur-Modifikator-Zweig zu einem offiziellen Mixer Release oder zu anderen 3D-Anwendungen und Game-Engine-Plattformen exportieren.
 
 <br />
 
-=Additional Panels Added with the Modifier and Customizations=
+= Zusätzliche Panels, die mit dem Modifier und den Anpassungen hinzugefügt wurden =
 
 [[File:User_Fracture_Modifier_Documentation_RigidBody.png|left|text-above|272px|Main Panel]]
-<b>Note:</b> A Rigid Body World is added when the first fracture is executed.
-<br />Also a Smoke Modifier and panel is automatically added when the smoke/dust/debris system is used from the Fracture Helpers addon.
+<b> Hinweis: </b> Eine starre Körperwelt wird hinzugefügt, wenn die erste Fraktur ausgeführt wird.
+<br /> Auch ein Smoke Modifier und Panel wird automatisch hinzugefügt, wenn das Rauch / Staub / Schmutz-System aus dem Fracture Helpers Addon verwendet wird.
 
-Additional standard Physics panels are added with this modifier due to its integration with the Bullet Physics library for animation simulations.  They include Rigid Body, Rigid Body Collisions and Rigid Body Dynamics.  See the Bullet Physics documentation for more information on standard settings.  
+Zusätzliche Standard-Physik-Panels werden mit diesem Modifikator aufgrund seiner Integration in die Bullet Physics-Bibliothek für Animations-Simulationen hinzugefügt. Sie beinhalten starren Körper, starre Körperkollisionen und starre Körperdynamik. Weitere Informationen zu den Standardeinstellungen finden Sie in der Dokumentation zur Bullet Physics.
 
-<b>Custom Settings for Physics Panels Added by Fracture Modifier -</b>
+<b> Benutzerdefinierte Einstellungen für Physik-Panels hinzugefügt durch Fraktur-Modifikator - </b>
 
-<b>Existing panel: Rigid Body</b><br />
-Type: Active<br />
-Added tickboxes "Triggered and Trigger"<br />
-<b>Triggered:</b> "Allow kinematic state being reset by collisions"<br />
-<b>Trigger:</b> "Can trigger activation of other animated objects, which are set up to be triggered"
+<b> Vorhandenes Panel: Starrer Körper </b> <br />
+Typ: Aktiv <br />
+Tickboxen hinzugefügt "Triggered and Trigger" <br />
+<b> Ausgelöst: </b> "Erlaube den kinematischen Zustand durch Kollisionen zurückzusetzen" <br />
+<b> Trigger: </b> "Kann die Aktivierung anderer animierter Objekte auslösen, die eingerichtet werden, um ausgelöst zu werden"
 
-<b>New panel: Rigid Body Trigger Advanced</b><br />
-Added tickboxes "Ghost, Propagate Trigger, Dissolve Constraints, Dynamic Trigger, Dissolve Plastic Constraints and Stop Trigger"
+<b> Neues Panel: Rigid Body Trigger Advanced </b> <br />
+Tickboxes hinzugefügt "Ghost, Trigger auslösen, Constraints auflösen, dynamischer Trigger auflösen, Plastic Constraints auflösen und Stop Trigger"
 
-<b>Ghost:</b> "Do not collide with object, but can activate other animated objects"<br />
-Goes through other rigid bodies, but generates collision info (and thus may activate objects together with trigger, while not pushing them away.)
+<b> Ghost: </b> "Kollidiere nicht mit dem Objekt, sondern kann auch andere animierte Objekte aktivieren" <br />
+Geht durch andere starre Körper, erzeugt aber Kollisionsinfos (und kann also Objekte zusammen mit Auslöser aktivieren, während sie sie nicht wegschieben.)
 
-<b>Propagate Trigger:</b> "Can propagate a trigger activation impulse received from a trigger ACROSS triggerable objects, use clusters for INNER object propagation!"<br />
-If a shard with a trigger property hits shards of an object with the propagate trigger enabled, the hit shards will not only be activated, but become triggers in the moment of their activation as well, they can propagate the trigger impulse to further triggered objects.
+<b> Ausbreiten Trigger: </b> "Kann einen Trigger-Aktivierungsimpuls, der von einem auslösbaren ACROSS-auslösbaren Objekten empfangen wird, propagieren, Cluster für die INNER-Objektausbreitung verwenden!" <br />
+Wenn ein Shard mit einer Trigger-Eigenschaft Scherben eines Objekts mit dem Ausbreitungsauslöser aktiviert hat, werden die Hit-Shards nicht nur aktiviert, sondern auch im Moment ihrer Aktivierung ausgelöst, sie können den Triggerimpuls auf weitere ausgelöste Objekte übertragen.
 
-<b>Dissolve Constraints:</b> "Dissolves constraints on shards of ths trigger TARGET"<br />
-This is a property for a target object and means all constraints attached to activated shards will break instantly upon being hit.
+<b> Auflösen von Constraints: </b> "Löscht Einschränkungen für Shards des Auslösers TARGET" <br />
+Dies ist eine Eigenschaft für ein Zielobjekt und bedeutet, dass alle Einschränkungen, die an aktivierten Scherben angehängt sind, sofort nach dem Treffen brechen werden.
 
-<b>Dynamic Trigger:</b> "Triggers a dynamic fracture independently of force threshold"<br />
-Allows breaking of dynamic fracture objects independently of the dynamic threshold force. Usually this means they will break instantly when being hit by an object with this property enabled. Together with Limit impact, if the trigger object is smaller than the triggered one, you can limit the area of the point cloud. This creates an irregular breaking pattern.
+<b> Dynamischer Trigger: </b> "Triggert einen dynamischen Bruch unabhängig von der Kraftschwelle" <br />
+Erlaubt das Brechen von dynamischen Bruchobjekten unabhängig von der dynamischen Schwellenkraft. Normalerweise bedeutet dies, dass sie sofort brechen werden, wenn sie von einem Objekt mit dieser Eigenschaft aktiviert werden. Zusammen mit Limit-Auswirkungen, wenn das Trigger-Objekt kleiner als das ausgelöste ist, können Sie den Bereich der Punktwolke begrenzen. Dies schafft ein unregelmäßiges Bruchmuster.
 
-<b>Dissolve Plastic Constraints:</b> "Dissolves plastic constraints on shards of this trigger target, only relevant for external mode"<br />
-Same logic as Dissolve constraints, but applies to plastic constraints only and only in External fracture mode.
+<b> Lösen Sie plastische Einschränkungen: </b> "Löscht plastische Einschränkungen auf Scherben dieses Triggerziels, nur relevant für den externen Modus" <br />
+Gleiche Logik wie Auflösen von Einschränkungen, gilt aber nur für plastische Einschränkungen und nur im externen Bruchmodus.
 
-<b>Stop Trigger:</b> "Can trigger deactivation of other simulated objects, which are set up to be triggered"<br />
-Upon contact with an object with this property, the affected shard will instantly stop moving and become kinematic IF its speed is below the Linear or Angular Velocity in the Rigid Body Dynamics Section. Works also if the value is greyed out if Enable Deactivation is deactivated. It is similar to Enable Deactivation, but that one seems too unreliable as it will not stop the objects by making them kinematic. They will only sleep and might be reactivated upon further contact, while stopped objects remain kinematic and thus stopped, though other shards may still collide with them properly.
-
-<br />
-
-=Understanding Shards and  Clusters=
-If you have 100 shards and 10 clusters, you get 10 clusters of 10 shards each.  Important: Clusters work only in conjunction with constraints, so enable them as well. (They are just glued together with a separate, higher threshold) Changing the cluster number affects just... the cluster number yes, that is intended. 
-
-Changing cluster number basically changes the size and shape of the clusters while retaining the same shard count (you will have to change both if you want more shards AND clusters)  And changing shard count or cluster count requires a refracture, because the assignment which shard belongs to which cluster happens in fracture step already and according to this they will be connected if constraints are enabled. You can also use the seed value to change the fracture shapes (a bit) and so the clusters resulting from them too.
-
-Additionally, to see a fast effect, you could set the cluster angle to 0.1 (at the fractured default cube, with 100 Shards and 10 clusters) and rotate the cube a bit so it rests on a corner, then start animation and when it hits the ground it should decompose to its clusters basically. Cluster Angle is one of the special breaking conditions which override the regular threshold settings. (so shards or clusters break if there is a certain angle between them)
-
-<b>Shard Mass Distribution.</b> Upon fracturing an object's total mass is distributed to the shards according to their volume. This might not be visible if you have for example 1000 Shards and Total Mass 1.  This is because each shard has a very little mass than the minimum mass which makes the objects look equally heavy. Increase the total mass of the object if more mass is desired per shard. 
-
-<b>A new checkbox "Use Initial Particle Coordinates" has been added</b> which when checked uses the particle birth coordinates and the coordinates from the current simulation state of the particle system. In your blend you need to uncheck it and if you use autoexecute and move your cube a bit around the mesh might look wrong or right depending on its position.
-
-<b>Dynamic fracture</b> is a powerful cutting edge technology for VFX and destruction work.  Be advised, if you have high shard counts(25+ may be high) in conjunction with low threshold and low minimum size the calculations may significantly slow down performance.
-
-<b>Helper Objects addon.</b> Included in the branch download is an addon named Fracture Helpers.  You can activate it from the menus File>User Preferences>Addons>Object: Fracture Helpers.  Or it can be installed from the "Install From File" button on the bottom of the Addons tab.
-
-It adds a Tool Shelf tab named Fracture. This addon makes it easier to use shapes and lines to control the look of the fracture as well as other workflow enhancements.  Newer versions can be downloaded from the DF-VFX website.  For more information see the [http://df-vfx.de/fracturemodifier/learn-fracturing/ addon tutorial] on the DF-VFX website.
-
-There is also a pie menu based on the Fracture Helpers addon.  You can find more information and a download link on our [https://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=3227562&viewfull=1#post3227562 BA forum thread].
-
-<b>More new shard and cluster docs coming soon!</b>
+<b> Stop Trigger: </b> "Kann die Deaktivierung anderer simulierter Objekte auslösen, die eingerichtet werden, um ausgelöst zu werden" <br />
+Bei Kontakt mit einem Objekt mit dieser Eigenschaft wird der betroffene Shard sofort aufhören zu bewegen und wird kinematisch, wenn seine Geschwindigkeit unterhalb der Linear- oder Winkelgeschwindigkeit im Bereich der starren Körperdynamik liegt. Funktioniert auch, wenn der Wert grau ist, wenn Enable Deaktivierung deaktiviert ist. Es ist ähnlich wie Enable Deactivation, aber das scheint man zu unzuverlässig, da es die Objekte nicht stoppen wird, indem man sie kinematisch macht. Sie werden nur schlafen und können bei einem weiteren Kontakt wieder aktiviert werden, während die gestoppten Gegenstände kinematisch bleiben und so gestoppt werden, obwohl andere Scherben immer noch mit ihnen kollidieren können.
 
 <br />
 
-=Understanding Constraints=
+= Scherben und Cluster verstehen =
+Wenn Sie 100 Shards und 10 Cluster haben, erhalten Sie 10 Cluster von jeweils 10 Shards. Wichtig: Cluster arbeiten nur in Verbindung mit Einschränkungen, also ermöglichen sie auch. (Sie sind nur zusammen mit einer separaten, höheren Schwelle verklebt) Ändern der Cluster-Nummer beeinflusst nur ... die Cluster-Nummer ja, das ist beabsichtigt.
 
-The Constraint Type setting can now also override the type of constraints being generated between all shards. Fixed is the default and mainly useful for "solid" shattering. Point can be useful in conjunction with the new Automerge feature to "fake" cloth and manage deformation as in bending metal and deforming plastic.
+Das Ändern der Cluster-Nummer ändert grundsätzlich die Größe und Form der Cluster unter Beibehaltung der gleichen Shard-Count (Sie müssen beide ändern, wenn Sie mehr Shards und Cluster wollen). Und das Ändern der Shard Count oder Cluster zählen erfordert eine Refraktion, weil die Zuordnung, die shard gehört zu welchem ​​Cluster im Bruchschritt bereits geschieht und entsprechend dazu werden sie verbunden, wenn Einschränkungen aktiviert sind. Sie können auch den Seed-Wert verwenden, um die Bruchformen zu ändern (ein bisschen) und damit die Cluster, die sich auch aus ihnen ergeben.
 
-Constraint type is applied between all constraints. Cluster is only between shards which reside in different clusters. Constraint type is between constraints with same cluster ID. Use point constraints for cloth tearing for example.  Bending for example will just look more natural and better with constraints which also bend some.
+Zusätzlich, um einen schnellen Effekt zu sehen, könntest du den Clusterwinkel auf 0,1 (auf den gebrochenen Standardwürfel, mit 100 Shards und 10 Clustern) einstellen und den Cube ein bisschen drehen, so dass er auf einer Ecke ruht, dann Animation anfängt und wenn er schlägt der Boden sollte sich im Grunde an seine Cluster zerlegen. Cluster-Winkel ist eine der besonderen Bruchbedingungen, die die regulären Schwellenwerte überschreiben. (so Scherben oder Cluster brechen, wenn es einen gewissen Winkel zwischen ihnen gibt)
 
-With the new Constrained Collision setting it allows for self-collision with Fracture Modifier "Fake Cloth" where pieces are still half attached to the mesh for example.  It can fake selfcollisions when using point constraints and Automerge as one way to make fake cloth for example. Another clever use would be with a "ring" of cubes, where 1 cube is missing so kind of an open loop, that demonstrates that the connected cubes form a "constraint island."  If they break somewhere, the constraint islands will be split.  So let's say it breaks into 2 pieces, you then get 2 constraint islands.  Cubes being in different islands will collide but not if they are in the same island. With constrained collision they will always collide.
+<b> Shard-Massenverteilung. </b> Bei der Fraktur wird die Gesamtmasse eines Objekts nach ihrem Volumen an die Scherben verteilt. Das ist vielleicht nicht sichtbar, wenn man zB 1000 Scherben und Gesamtmasse 1 hat. Das ist, weil jeder Scherben eine sehr geringe Masse hat als die minimale Masse, die die Objekte gleich schwer macht. Erhöhe die Gesamtmasse des Objektes, wenn mehr Masse pro Scherbe gewünscht wird.
 
-Alternatively you can create more constraints to get a more stable object and shards in the simulation. The limit determines how many other shards can be connected simultaneously to a shard. The contact distance can be lowered to avoid "long range" constraints that connect very far apart objects together. Both limit the total constraint count which affects simulation behavior and speed. 
+<b> Ein neues Kontrollkästchen "Initial Particle Coordinates verwenden" wurde hinzugefügt </b> welches bei der Überprüfung die Partikel-Geburtskoordinaten und die Koordinaten aus dem aktuellen Simulationszustand des Partikelsystems verwendet. In deiner Mischung musst du es deaktivieren und wenn du Autoexecute einsetzst und deinen Würfel ein bisschen um das Netz ziehst, könnte je nach seiner Position falsch oder richtig aussehen.
 
-Less constraints means less stable but faster simulation. More constraints means a slower sim but more stable object. With an equivalent threshold, shards should keep together longer this way.
+<b> Dynamic Fraktur </b> ist eine leistungsstarke Technologie für VFX- und Zerstörungsarbeiten. Seien Sie geraten, wenn Sie hohe Shard-Zählungen haben (25 + kann hoch sein) in Verbindung mit niedrigen Schwellenwert und niedrigen minimalen Größe die Berechnungen können erheblich verlangsamen Leistung.
 
-With Constraint Deform Settings Angle and Distance(the most useful settings) make deformation persistent when exceeding certain angle or distance. Cluster Angle, Cluster Distance should apply to shards of different clusters only, but not very useful in practice currently. Weighted Deform Angle, Weighted Distance modify the deform angle and distance by the threshold weight map. Probably also not very useful in practice currently.
+<b> Helper Objects Addon. </b> Im Zweig-Download ist ein Addon namens Fracture Helpers enthalten. Sie können es aus den Menüs aktivieren. Datei> Benutzereinstellungen> Addons> Objekt: Bruchhelfer. Oder es kann von der Schaltfläche "Von der Datei installieren" auf der Unterseite der Registerkarte Addons installiert werden.
 
-Deform Weakening Factor multiplies the threshold(!) with 1-factor each time a deformation is made persistent (angle or distance exceeded), to simulate that continously bending metal in opposite directions might break it in the middle.
+Es fügt eine Tool-Shelf-Registerkarte namens Fracture hinzu. Dieses Addon macht es einfacher, Formen und Linien zu verwenden, um das Aussehen der Fraktur sowie andere Workflow-Verbesserungen zu kontrollieren. Neuere Versionen können von der DF-VFX-Website heruntergeladen werden. Weitere Informationen finden Sie auf der Website von DF-VFX unter http://df-vfx.de/fracturemodifier/learn-fracturing/ addon Tutorial.
 
-Deform Workflow Side Note: Deform is used to retain the deformed shape to fake metal like in persistent deformation.  At a minimum there is no flipping back to original shape but, it might bend even further if angle is too low for example.
+Es gibt auch ein Tortenmenü, das auf dem Fracture Helpers Addon basiert. Weitere Informationen und einen Download-Link finden Sie auf unserer [https://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=3227562&viewfull=1#post3227562 BA Forum Thread].
 
-Fake Cloth happens mostly with the Automerge Distance and Perform Merge settings.  Using those two settings results in metal like sheets by "persistently" deforming the Fake Cloth by rebuilding the constraints on a frame by frame basis.  One builds basically on top of each subsequent one.  The workflow is first adjust the settings to have Fake Cloth.  Then add deform settings to make the deformations more persistent.
-
-The deform settings could also be used without Automerge Distance to have something deforming with its original gaps.  One use case would be making broken concrete with bent rebar inside.  The rebar would need to be added visually.
-
-<b>Special Note About Constraints:</b>  the advanced constraints system of the Fracture Modifier can be used without actually fracturing and object.  Just set the shard count to 1 and then setup relationships between multiple objects via grouping, parenting and using empties then Execute Fracture.  This combined with constraint settings will allow some really advanced object interactions without any individual object fracturing or breaking apart into shards.  For example an animation can be made of a cup being shaken and dice rolling around inside it.  COOL STUFF!
-
-<b>More new constraint docs coming soon!</b>
+<b> Mehr neue Shard- und Cluster-Dokumente kommen bald! </b>
 
 <br />
 
-=Understanding Fracture Utilities=
+= Grundlegendes zu Constraints =
 
-Autohide and Automerge are reworked.  Use autohide for hiding inner faces as usual, but additionally in conjunction with Automerge distance to "track" verts nearby up to the autohide distance(to detect shared verts.) 
+Die Constraint Type-Einstellung kann nun auch die Art der Constraints überschreiben, die zwischen allen Shards generiert werden. Fixed ist die Voreinstellung und vor allem nützlich für "solide" Shattering. Punkt kann in Verbindung mit der neuen Automerge-Funktion nützlich sein, um "Tuch zu fälschen" und die Verformung zu bewältigen, wie beim Biegen von Metall und dem Verformen von Kunststoff.
 
-Use Automerge to keep shared verts together until the automerge dist is exceeded. (May mess up the mesh if having too large values in certain situations!)
+Constraint-Typ wird zwischen allen Einschränkungen angewendet. Cluster ist nur zwischen Scherben, die sich in verschiedenen Clustern befinden. Constraint-Typ ist zwischen Constraints mit derselben Cluster-ID. Verwenden Sie Punktbeschränkungen für Tuch reißen zum Beispiel. Biegen zum Beispiel wird einfach mehr natürlich und besser mit Zwängen, die auch einige beugen.
 
-Keep Distortion tries to keep deformations happening at "tearing" persistent. Might show unpredictable behavior in subsequent runs because there is an optimization step internally on the last frame to detect unchanged shared vertices which are not taken into account again in the subsequent runs. Changing Autohide Distance might solve this temporarily if issues arise. Use with care...
+Mit der neuen Constrained Collision-Einstellung ermöglicht es eine Selbstkollision mit Fracture Modifier "Fake Cloth", bei der Stücke zum Beispiel noch halb an der Masche befestigt sind. Es kann Selbstfälschungen bei der Verwendung von Punktbegrenzungen und Automerge als eine Möglichkeit, um gefälschte Tuch zum Beispiel zu machen. Ein weiterer kluger Gebrauch wäre mit einem "Ring" von Würfeln, wo 1 Würfel fehlt so eine Art offene Schleife, die zeigt, dass die verbundenen Würfel eine "Zwangsinsel" bilden. Wenn sie irgendwo brechen, werden die Zwangsinseln aufgeteilt. Also lasst uns sagen, es bricht in 2 Stücke, dann bekommst du 2 Zwangsinseln. Würfel, die in verschiedenen Inseln sind, werden zusammenstoßen, aber nicht, wenn sie auf derselben Insel sind. Bei eingeschränkter Kollision werden sie immer kollidieren.
 
-Perform Merge actually welds geometry which is kept closely together by Automerge and Remove doubles. Warning: changes topology and might be slow! Autohide also changes topology.
+Alternativ können Sie weitere Einschränkungen erstellen, um ein stabileres Objekt zu erhalten und in der Simulation zu scheiden. Die Grenze bestimmt, wie viele andere Scherben gleichzeitig mit einer Scherbe verbunden werden können. Der Kontaktabstand kann abgesenkt werden, um "lange Reichweite" Einschränkungen zu vermeiden, die sehr weit voneinander entfernte Objekte miteinander verbinden. Beide begrenzen die Gesamtbeschränkungszählung, die das Simulationsverhalten und die Geschwindigkeit beeinflusst.
 
-Fake cloth is best achieved with Voronoi+Bisect on flat or VERY thin(Solidify Modifier) geometry. It is not so good with solid geometry, but could work in some cases. Avoid methods which create inner faces here, use only Voronoi + Bisect or Fast Bisect here ideally.
+Weniger Einschränkungen bedeutet weniger stabile, aber schnellere Simulation. Weitere Einschränkungen bedeutet ein langsameres sim, aber stabileres Objekt. Mit einer gleichwertigen Schwelle sollten sich Scherben längere Zeit zusammenhalten.
 
-Convert to Keyframes now pops up a dialog. Start / End frame are selectable, as well as step size. Additionally a threshold can be added. The ratio of change between old and new loc/rot before keyframe is set, roughly speaking. The lower the threshold the more keyframes should be set(also between steps), threshold = 0, set only keyframes at each step. There are step keyframes and threshold based adaptive keyframes in between. Use Handles smoothes step handles and makes adaptive handles vector. This is useful with larger step sizes to avoid loosing some detailed collision info while setting keyframes.
+Mit Constraint Deform Einstellungen Winkel und Distanz (die nützlichsten Einstellungen) machen Deformation persistent bei Überschreitung bestimmter Winkel oder Entfernung. Cluster-Winkel, Cluster Distance sollte nur für Shards von verschiedenen Clustern gelten, aber in der Praxis derzeit nicht sehr nützlich. Gewichteter Deformwinkel, gewichteter Abstand modifizieren den Deformwinkel und den Abstand um die Schwellenwertkarte. Wahrscheinlich auch nicht sehr nützlich in der Praxis derzeit.
 
-<br />
+Deform Schwächungsfaktor multipliziert die Schwelle (!) Mit 1-Faktor jedes Mal, wenn eine Verformung persistent (Winkel oder Abstand überschritten), um zu simulieren, dass kontinuierlich Biegen Metall in entgegengesetzte Richtungen könnte es in der Mitte brechen.
 
-=Additional Workflow Information=
+Deform Workflow Side Hinweis: Deform wird verwendet, um die deformierte Form zu halten, um Metall wie in persistenten Verformung zu fälschen. Minimal gibt es kein Zurückspringen in die ursprüngliche Form, aber es könnte sich noch weiter biegen, wenn der Winkel zu niedrig ist.
 
-<b>Using the Particle System on the original object or on Helper Objects:</b><br />
-Always add the particle system prior to the fracture modifier in the stack.
-In particle system you do not need the "Use Modifier stack" unless you want to emit particles from the shards.  Alternatively you could place the particle system modifier below the fracture modifier.  Use modifier stack tick box is a bit odd there. 
+Fake Cloth passiert meistens mit dem Automerge Distance und führt Merge-Einstellungen durch. Die Verwendung dieser beiden Einstellungen führt zu metallischen Blättern, indem sie das Fake Cloth "beharrlich" verformen, indem sie die Beschränkungen auf einer Frame-by-Frame-Basis wieder aufbauen. Man baut grundsätzlich oben auf jedem nachfolgenden. Der Workflow passt zuerst die Einstellungen an, um Fake Cloth zu haben. Fügen Sie dann Deform-Einstellungen hinzu, um die Deformationen anhaltender zu machen.
 
-It is best to setup the particle system while being on frame 1 or the rigidbody cache start frame.  Set it to Volume, Random and let all particles emit on frame 1. To do this, set Emission start and Emission end on frame 1. The particle system display might be visually unreliable, but the particle birth coordinates should be valid anyways.
+Die Deform-Einstellungen können auch ohne Automerge-Distanz verwendet werden, um etwas mit den ursprünglichen Lücken zu verformen. Ein Anwendungsfall würde gebrochenen Beton mit gebogenen Bewehrung innen machen. Die Bewehrung müsste visuell hinzugefügt werden.
 
-Then under Experimental you can specify "Own Particles" as point source. You can manipulate the particle system via texture for example to manipulate the particle distribution and thus the input point cloud to get irregular shards.
+<b> Besondere Anmerkung über Einschränkungen: </b> Das erweiterte Constraints-System des Fracture Modifier kann ohne eigentliches Brechen und Objekt verwendet werden. Legen Sie einfach die Shard-Zählung auf 1 und dann die Zusammenstellung von Beziehungen zwischen mehreren Objekten über Gruppierung, Erziehung und Verwendung von Leergut dann Ausführen Fraktur. Dies kombiniert mit Constraint-Einstellungen ermöglicht einige wirklich fortgeschrittene Objekt-Interaktionen ohne jedes einzelne Objekt Frakturieren oder brechen auseinander in Scherben. Zum Beispiel kann eine Animation aus einer Tasse geschüttelt werden und Würfel rollen herum drinnen. COOLES ZEUG!
 
-Alternatively you can specify a particle system on another object. This must be put into a group and that group will be linked to the modifier as "Extra Group". You then have to use  "Extra Particles" as point source. A group is used because this way you can add multiple objects as helper objects.
-
-For example you can make the point cloud more dense, if you put a particle system on a small helper object and place it inside the original object you want to fracture. In the environment of the helper object the shards will become smaller than everywhere else in the original object. You get bigger shards farther away from the helper object.
-If you emit on faces, boolean can get into trouble, and with bisect fill probably also because you are close to the edge of the bounding box.
-
-The voronoi method always decomposes the entire objects, the shards get bigger because those cells are basically "open" cells, only the container or "boundary" cells limit them.
-For multiple helper objects, if you have some objects, each with particle system and all in the "extra" group, their particles all add points into the point source.
-
-<b>Ground Plane Interaction:</b><br />
-Here is additional information on the settings to where collision with the ground plane does not cause an undesired fracture.
-One technique is to make a hole in the ground. The hole in the ground in the wood blend example is a pocket, which should prevent the entire object from dropping to the side when hit. But this is not very reliable and tedious to setup every time.
-For gluing objects to a passive ground plane you basically weightpaint those areas touching the ground with a weight of 1.0. You will have to paint the object prior to adding the modifier, because at the moment you cannot see the weightpaint on the object with the modifier enabled. A weight of 1.0 is recommended because the shard weight will be calculated as average from all vertices belonging to the fracture shard, and the more verts have a weight = 1, the higher the probability is that the entire shard gets a weight of > 0.5 and will be considered passive during simulation.
-
-After you have finished painting the original object, you get a vertex group as "result". This must be linked into the modifier prior to fracturing. If you then execute the fracture, the weightpaints will be interpolated from the original geometry to the fractured one and the shard weights will be calculated from the interpolated vertex weights as described above.
-
-If you notice that the desired passive areas of the object still move during simulation, you will have to paint more of the original mesh with a high weight. Hint: it might help to subdivide the original object to have more control over the weight paint distribution and allow a more exact weight interpolation to the shards.  This is another technique if you do not want to cut holes into the ground.
-
-<b>Other Techniques:</b><br />
-1) Have the object touch the ground so it does not fall down any further<br /> 
-2) Disable gravity (this should be made on object basis, not on scene basis as it is now), probably not an option since you can not animate the field weights as it seems<br />  
-3) Use "Start Deactivated" and the object will be activated on collision then (and start falling down)<br />
-4) Use constraints and "good" settings for thresholds, so an object touching the ground won't collapse by its own. You have to experiment and try out settings by running the simulation until you get the desired results.<br />
-
-<b>Using Compound Objects:</b><br />
-For a wall of compound objects(boards, beams and plaster).
-Basically you first fracture the separate objects with the voronoi methods, then apply.
-Then join everything together and refracture to the existing shards (with an "invalid" source, like Extra Particles without a helper Object) then you get a simulatable single object.
-
-Apply is not a good approach, but at the moment there is no feasible concept on how to join separate objects under 1 modifier, because that concept is unknown to Blender.
-
-==Advanced Workflow Information==
-(This section is a work-in-progress stub and will be continuously improved)
-
-<b>Vertex groups and weightpainting:</b><br />
-This can be used to get more advanced fractures and control. See the Other Experimental Settings and Ground Plane Interaction sections above.  (More workflow specific information will be added soon here.)
-
-<b>Interaction with rigid body constraints to and from fractured objects:</b> 
-<br />Currently using a fractured object and making a rigid body constraint with and empty object to another object is not supported directly. As a workaround you can try to join the objects and put the modifier on and reuse the existing islands but currently only the "Fixed" constraint is implemented for that. Another technique to try is to convert the modifier to separate objects with the "Convert to Objects" button at the very bottom of the "Experimental" section. Then single objects can be worked with if that is what is desired.
-
-<b>Advanced UV mapping:</b> 
-<br />Currently inner faces do not get a UV. Inner materials can be assigned to new filled in faces from boolean or bisect+fill methods. Existing UVs on outer faces are preserved for the most part. Note: some options under Experimental do not quite work with CustomData like textures currently.(More workflow specific information will be added soon here.)
-
-<b>Using the Sub Object Group:</b> 
-<br />This feature is intended to join multiple derived meshes of different objects with different modifier settings together in a "collector" object. Then theoretically constraint shards of different objects together. But this may not give the desired results. Note: DO NOT attempt to fracture in the collector object. It will mess up the mesh. Only RE-USE the shards there, and textures etc. All customdata stuff does not work there.
-
-One way to experiment is to put all objects with fracture modifiers into a group and assign it to another object as Sub Object Group.  Then choose extra particles (WITHOUT a helper object....) If all works well you get a "merged" copy of all objects from the sub object group in your "collector" object. Since it is then in one derivedmesh, you can constraint that together. But beware, many ODD results still happen with this. 
-
-<b>Working with glass materials:</b> 
-<br />The current recommended method is using the Autohide Distance, Automerge Distance, Smooth Objects and Fix Normals settings to keep the cracks from showing up before collision contact with an object. The Rigid Body Dynamics panel also has physics Deactivation settings that are useful in the timing of separation.
-
-There is also a technique from Bashi for removing inner polygons before they break apart. This is mainly used for glass materials. See the following thread: [http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2713632&viewfull=1#post2713632 Bashi's BA post]
-
-<b>Exporting animations to other Blender versions and game engine platforms</b>
-<br />
-The current recommended method is using the Convert to Keyframed Objects feature.  This will convert the stored shards into regular blender objects and keyframe the animation simulation.  This is similar to the idea of baking.
-
-An additional technique to try is to export with MDD and MeshCache Modifier. In case of re-using in a blend file try a joined mesh of the islands. 
-<br />(More workflow specific information will be added soon here.)
-
-==Additional Workflow Links==
-(NOTE: right click on the link and click open in new tab or window to also stay on this page)
-
-[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2960861&viewfull=1#post2960861 Controlling the location of fractures and shard size]
-
-[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2958069&viewfull=1#post2958069 Testing smoke from inner faces]
-
-[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2956768&viewfull=1#post2956768 Weight painting to control fracturing]
-
-[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2916220&viewfull=1#post2916220 Creating circular cracks to simulate bullet like impact fracturing]
-
-[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=3053403&viewfull=1#post3053403 UE4 and Unity workflows for importing Fracture Modifier animations via FBX]
+<b> Mehr neue Constraint-Dokumente kommen bald! </b>
 
 <br />
 
-=General Tips=
+= Verstehen von Fracture Utilities =
 
-*Meshes should be water tight(non manifold) for boolean if inner surfaces are desired. This is because bisect with inner surfaces is not very reliable on more complex objects. But fast bisect for example leaves open pieces and should work for almost all meshes.
+Autohide und Automerge werden überarbeitet. Verwenden Sie Autohide, um innere Gesichter wie üblich zu verstecken, aber zusätzlich in Verbindung mit Automerge Abstand zu "track" verts in der Nähe bis zum autohide Abstand (um freigegebene Verts zu erkennen).
 
-*Additional notes on voronoi, bisect and boolean: voronoi decomposes the bounding box in the first step, and in the 2nd step you make boolean with each cell face or bisect with each cell face or fast bisect uses 1 random face of each cell only. Bisect + fill basically cuts the mesh in halves along the cell faces which are treated as planes and tries to fill the inner faces.  Bisect does not fill.  Fast bisect is a different variant, using one random face per cell only and basically shrinking the processed mesh in each step by sorting the shards according to their size and splitting the biggest ones always. Boolean and Bisect are reused from the blender code base.
+Benutze Automerge, um geteilte Verweise zusammen zu halten, bis das Automerge dist überschritten wird. (Möge das Mesh durcheinander bringen, wenn ich in bestimmten Situationen zu große Werte habe!)
 
-*When using clusters a refracture might be necessary to reflect changes in parameters in cluster settings. (TODO, investigate if this and FM or a Blender bug.) 
+Halten Sie Verzerrung versucht zu halten Deformationen passiert bei "reißen" persistent. Möglicherweise unvorhersehbares Verhalten in nachfolgenden Läufen zeigen, da es einen Optimierungsschritt intern auf dem letzten Frame gibt, um unveränderte gemeinsame Scheitelpunkte zu erkennen, die in den nachfolgenden Läufen nicht wieder berücksichtigt werden. Ändern von Autohide Distanz könnte dies vorübergehend lösen, wenn Probleme auftreten. Gebrauch mit Sorgfalt ...
 
-*Diagonal splinters can be achieved by rotating the object in edit mode. Since this adds a rotation "into the mesh" basically.  Object rotation then takes the splinters with it, as splintering only affects local axis.
+Führen Sie Merge tatsächlich Schweißung Geometrie, die eng beieinander durch Automerge und Doppelte entfernt. Warnung: ändert Topologie und kann langsam sein! Autohide ändert auch die Topologie.
 
-*With Grease Pencil there is an option to use the long lines / strokes as edge based fracture source but it is not reliable.  Make sure to start and end the stroke outside of mesh you want to fracture.  Also increase the "Offset" setting more since it must exceed the mesh "depth" along the axis you choose to project the cut on.  Only global X, Y, Z are supported to project cut against.
+Fake Tuch ist am besten mit Voronoi + Bisect auf flache oder sehr dünne (Solidify Modifier) ​​Geometrie erreicht. Es ist nicht so gut mit solider Geometrie, könnte aber in einigen Fällen arbeiten. Vermeiden Sie Methoden, die hier innere Gesichter schaffen, verwenden Sie hier nur Voronoi + Bisect oder Fast Bisect.
 
-*To make objects break more easily you can scale up the mass, this way you can scale up thresholds too and do not have to fiddle around in the 0.000x area.  Higher masses create higher forces in the simulation.
-
-*To limit constraints, use the per island count or a searching range, this can avoid building too "long" of constraints.
-
-*If a fracture problem occurs in boolean due to float limitations, scale up the mesh in edit mode and then scale back down in object mode.  This at least can eliminate those problems, but it might affect the sim.
-
-*You can override the thresholds with a breaking angle, distance or percentage (means when x percent of all constraints of an island is broken, the rest will break too). This is so dangling islands fall off easier.
-
-*You can use existing mesh islands as shards IF you specify an invalid point source, LIKE extra Particles with NO helper group selected. THIS will reuse the islands.
-
-*To build compound objects fracture one object, apply, fracture another, apply, join the mesh, and set up a new modifier with invalid source -> you get a simulation compound where all shards can interact with each other. They are not limited by object border.
-
-*Following other modifiers being executed permanently slows down the sim speed unless they would cache their results as well during sim.  But currently only this fracture modifier does this.
-
-*Under Windows automatic determination of bbox longest side has problems.  When you enter the setting 0, often you get garbage values so it is better to avoid it.
+Konvertieren in Keyframes erscheint jetzt einen Dialog. Start / End Frame sind wählbar, sowie Schrittgröße. Zusätzlich kann ein Schwellenwert hinzugefügt werden. Das Verhältnis der Veränderung zwischen alt und neu loc / rot vor Keyframe ist grob gesprochen. Je niedriger die Schwelle, desto mehr Keyframes sollten gesetzt werden (auch zwischen den Schritten), Schwelle = 0, setzen bei jedem Schritt nur Keyframes. Es gibt Schritt Keyframes und Schwellen basierte adaptive Keyframes dazwischen. Verwenden Handles glättet Schrittgriffe und macht adaptive Griffe Vektor. Dies ist bei größeren Schrittweiten nützlich, um zu vermeiden, dass einige detaillierte Kollisionsinformationen bei der Einstellung von Keyframes verloren gehen.
 
 <br />
 
-=Settings Suggestions=
+= Zusätzliche Workflow-Informationen =
+(Anmerkung: Fracture Helpers Addon-Dokumentation wird in Kürze bekannt gegeben. Jetzt sehen Sie bitte [[http://df-vfx.de/fracturemodifier/learn-fracturing/ DF-VFX's Tutorials]])
+<b> Verwenden des Partikelsystems auf dem Originalobjekt oder auf Helperobjekten: </b> <br />
+Füge das Partikelsystem vor dem Frakturmodifikator immer im Stapel hinzu.
+In Partikel-System brauchen Sie nicht die "Use Modifier Stack", wenn Sie wollen, um Partikel aus den Scherben zu emittieren. Alternativ können Sie den Partikelsystem-Modifikator unterhalb des Frakturmodifikators platzieren. Verwenden Sie Modifier Stack Tick-Box ist ein bisschen seltsam dort.
 
-<b>Suggestions on some settings to change for different results and experimentation:</b>
+Es empfiehlt sich, das Partikelsystem während des Rahmens 1 oder des starren Cache-Startrahmens einzurichten. Setzen Sie es auf Volume, Random und lassen Sie alle Partikel auf Frame 1 emittieren. Um dies zu tun, setzen Sie Emission Start und Emission Ende auf Frame 1. Die Partikel-System-Display könnte visuell unzuverlässig sein, aber die Partikel-Geburt Koordinaten sollten sowieso gültig sein.
 
-<b>Trying the different algorithms</b> would cover four possibilities.
-There are more with/without constraints, high/low thresholds, breaking angle, breaking percentage.  
-It depends on how you want to make the effect look like.
+Dann unter experimentell können Sie "Eigene Partikel" als Punktquelle angeben. Sie können das Partikelsystem über Textur manipulieren, um beispielsweise die Partikelverteilung zu manipulieren und damit die Eingangspunktwolke zu unregelmäßigen Scherben zu bekommen.
 
-<b>Higher rigid body masses</b> will probably create some different results.
+Alternativ können Sie ein Partikelsystem auf einem anderen Objekt angeben. Dies muss in eine Gruppe eingefügt werden und diese Gruppe wird mit dem Modifikator als "Extra Group" verknüpft. Sie müssen dann "Extra Partikel" als Punktquelle verwenden. Eine Gruppe wird verwendet, da Sie auf diese Weise mehrere Objekte als Helferobjekte hinzufügen können.
 
-<b>Constraint limits</b> (distance and number limit)
-good settings might be distance = 1 and limit around 5-6.
-You can set distance to 0, then it will take max bbox length as distance (and set it in the GUI as well, so do not wonder about this...)
+Zum Beispiel können Sie die Punktwolke dichter machen, wenn Sie ein Partikelsystem auf ein kleines Helferobjekt legen und es in das ursprüngliche Objekt legen, das Sie brechen möchten. In der Umgebung des Helferobjekts werden die Scherben kleiner als überall im ursprünglichen Objekt. Du bekommst größere Scherben weiter weg vom Helferobjekt.
+Wenn du auf Gesichter emittierst, kann Boolean in Schwierigkeiten geraten, und mit bisect füllen vermutlich auch weil du nahe am Rand der Begrenzungsbox bist.
 
-<b>The more constraints</b> the slower it will be, but also more stable (won't collapse so easily)
-Check the terminal console maybe, on how many constraints were built actually (it's printed there).
+Die voronoi-Methode zerlegt immer die gesamten Objekte, die Scherben werden größer, weil diese Zellen im Grunde "offene" Zellen sind, nur die Container- oder "Grenz" -Zellen beschränken sie.
+Für mehrere Helfer-Objekte, wenn Sie einige Objekte haben, jeweils mit Partikel-System und alle in der "Extra" -Gruppe, ihre Partikel alle Punkte in die Punktquelle hinzufügen.
 
-<b>The smaller the shards are with constraints</b> the smaller the search radius needs to become to find a comparable amount of neighbors for similar stability / simulation behavior.  Also with the smaller constraint search radius you also get a better performance on objects with many small shards since the constraint building time is way faster than with a bigger radius.
+<b> Ground Plane Interaction: </b> <br />
+Hier sind zusätzliche Informationen über die Einstellungen, wo Kollision mit der Grundebene nicht zu einem unerwünschten Bruch führt.
+Eine Technik ist, ein Loch in den Boden zu machen. Das Loch in den Boden in der Holzmischung Beispiel ist eine Tasche, die verhindern sollte, dass das gesamte Objekt auf die Seite fallen, wenn getroffen. Aber das ist nicht sehr zuverlässig und langweilig, jedes Mal einzurichten.
+Für das Kleben von Objekten zu einer passiven Grundplatte Sie im Grunde Gewicht paint diejenigen Bereiche berühren den Boden mit einem Gewicht von 1,0. Sie müssen das Objekt vor dem Hinzufügen des Modifikators malen, denn im Moment können Sie das Gewichtspapier auf dem Objekt nicht sehen, wenn der Modifikator aktiviert ist. Ein Gewicht von 1,0 wird empfohlen, weil das Shard-Gewicht als Durchschnitt von allen Ecken, die zur Bruchscherbe gehören, berechnet wird und je mehr Verts ein Gewicht haben = 1, desto höher ist die Wahrscheinlichkeit, dass die gesamte Scherbe ein Gewicht von> 0,5 und wird während der Simulation als passiv betrachtet.
 
-<b>For vertex constraint targets</b> use small values like 0.01 or so or else Blender will cause Blender to hang here.(TODO)
+Nachdem Sie das Originalobjekt fertiggestellt haben, erhalten Sie eine Vertexgruppe als "Ergebnis". Dies muss vor dem Bruch in den Modifikator verknüpft werden. Wenn Sie dann die Fraktur ausführen, werden die Gewichtsfarben von der ursprünglichen Geometrie zu der gebrochenen interpoliert und die Scherbegewichte werden aus den interpolierten Scheitelgewichten wie oben beschrieben berechnet.
 
-<b>If thresholds or contact distances are too high</b> you experience rubber like behavior, so weaken thresholds or increase mass, or use mass dependent thresholds check box, this multiplies maximum threshold with mass fraction of shard.
-For rigid body collision shapes use Convex Hull for the shards. If you apply this to the main object, it applies to all shards automatically.
+Wenn Sie feststellen, dass sich die gewünschten passiven Bereiche des Objekts während der Simulation noch bewegen, müssen Sie mehr von der ursprünglichen Masche mit einem hohen Gewicht malen. Hinweis: Es könnte helfen, das ursprüngliche Objekt zu unterteilen, um mehr Kontrolle über die Gewichtsfarbe zu haben und eine genauere Gewichtsinterpolation zu den Scherben zu ermöglichen. Dies ist eine andere Technik, wenn man keine Löcher in den Boden schneiden will.
 
-<b>With multiple objects in a scene</b> you could also apply all fracture modifiers on all the objects.  Then join them to one object and use as the point source "Extra Particles."  This is an empty source if you do not specify an extra group as well. 
-The modifier detects this and will decompose it into the given islands then.  That is especially useful if you need different fracture settings for parts of the same object.
-This is useful for a wood wall for example.  It could have boards and plaster.
-<br /><b>NOTE:</b> it is better to put the textures onto the objects before.  Boolean and Bisect should handle the UVs.
+<b> Andere Techniken: </b> <br />
+1) Habe das Objekt den Boden berühren, damit es nicht weiter herunterkommt <br />
+2) Deaktivieren Sie die Schwerkraft (dies sollte auf Objektbasis gemacht werden, nicht auf Szenenbasis, wie es jetzt ist), wahrscheinlich keine Option, da man die Feldgewichte nicht animieren kann, wie es scheint <br />
+3) Verwenden Sie "Start Deaktiviert" und das Objekt wird bei Kollision dann aktiviert (und beginnt zu fallen) <br />
+4) Verwenden Sie Einschränkungen und "gute" Einstellungen für Schwellenwerte, so dass ein Objekt, das den Boden berührt, nicht durch seine eigenen zusammenbrechen wird. Sie müssen experimentieren und ausprobieren, indem Sie die Simulation durchführen, bis Sie die gewünschten Ergebnisse erhalten. <br />
 
-<b>With complex objects</b> most likely boolean will fail anyway and bisect fill does not reliably fill the faces(it is the default bisect filling code from Blender that is used.)
-Triangle fill works terribly but edgnet-fill is not much better though (internal bisect filling algorithms).
-According to a developer this is "expected behavior." :S
+<b> Verwenden von zusammengesetzten Objekten: </b> <br />
+Für eine Wand von zusammengesetzten Objekten (Bretter, Balken und Gips).
+Grundsätzlich brüllst du zuerst die einzelnen Objekte mit den voronoi Methoden, dann bewerbe dich.
+Dann verbinden Sie alles zusammen und brechen Sie die vorhandenen Scherben (mit einer "ungültigen" Quelle, wie Extra Partikel ohne Helferobjekt), dann erhalten Sie ein simulierbares Einzelobjekt.
 
-<b>If boolean fails with smaller objects</b> it might help to scale them up in edit mode.  Then scale them down in object mode again(float inaccuracies occur mostly when object too small or too big).
-Changing the seed might help also, or just change the amount of shards.
+Apply ist nicht ein guter Ansatz, aber im Moment gibt es kein realisierbares Konzept, wie man einzelne Objekte unter 1 Modifikator anschließen kann, weil dieses Konzept Blender unbekannt ist.
 
-<b>An edge split</b> after fracture helps great with smoothing objects.
-Remember to apply all modifiers before fracture - bad performance otherwise.
+== Erweiterte Workflow-Informationen ==
+(Dieser Abschnitt ist ein Work-in-Fortschritt Stub und wird kontinuierlich verbessert)
 
-<b>Weight painting on the original mesh to define a vertex group</b> can also be experimented with.  These weights are multiplied with the maximum threshold, so higher weighted areas are more stable due to higher thresholds.
+<b> Vertex-Gruppen und Gewichtung: </b> <br />
+Dies kann verwendet werden, um erweiterte Frakturen und Kontrolle zu bekommen. Sehen Sie sich die anderen experimentellen Einstellungen und Ground Plane Interaction Abschnitte oben. (Weitere Workflow-spezifische Informationen werden in Kürze hier hinzugefügt.)
 
-<b>Thoughts on one container inside another method.</b> The more and smaller shards an object is decomposed into, the more likely you do not get concave parts. You will have to use Convex Hull as Rigidbody shape type because Mesh is very unstable when used at active / simulated objects and causes only trouble. The convex hulls apply only to each shard separately, so its safe to use them on concave objects too, given the fact you have enough small shards so you dont get visually concave parts. Those will still have a convex hull and behave in an unexpected way.
-Example/test blend - TODO update sample file link
-In this file the outer object has more shards, so they are less likely concave.
+<b> Interaktion mit starren Körperbeschränkungen zu und von gebrochenen Objekten: </b>
+<br /> Derzeit mit einem gebrochenen Objekt und macht eine starre Körperbeschränkung mit und leeres Objekt zu einem anderen Objekt wird nicht direkt unterstützt. Als Workaround können Sie versuchen, sich den Objekten anzuschließen und den Modifikator auf die vorhandenen Inseln zu setzen und zu verwenden, aber derzeit nur die "Fixed" -Beschränkung ist dafür implementiert. Eine andere Technik zu versuchen ist, den Modifikator in getrennte Objekte mit der Schaltfläche "In Objekte konvertieren" umzuwandeln, ganz unten im Abschnitt "Experimentell". Dann können einzelne Objekte bearbeitet werden, wenn das ist was gewünscht wird.
 
-<b>Recommended workflow for preparing text for fracture.</b> Keep in mind, even with this workflow, some text it better for converting than others. Custom modeled text is the best for text effects.  This is the ideal way that experienced text animators do it.<br />
-The general workflow is as follows - convert to mesh, remove doubles, limited dissolve, optionally remesh, set geometry to center of bbox to set the point of mass to the center (avoids "unexpected" movement during simulation, like falling to one side. Inversely set the point of mass anywhere if such behavior is wanted.)  Then use boolean, if fails use bisect + fill or bisect.<br />
-<b>NOTE:</b> using the bevel command may result in a small self intersection where boolean failed.  Manual editing of the mesh may be required.  Manual editing is typically needed in text based meshes since the quality of original text may not be suited for conversion to mesh.
+<b> Fortgeschrittene UV-Mapping: </b>
+<br /> Derzeit innere Gesichter erhalten keinen UV. Innenmaterialien können neuen gefüllten Gesichtern aus Booleschen oder Bisect + Füllmethoden zugeordnet werden. Bestehende UVs auf Außenflächen sind zum größten Teil erhalten. Hinweis: Einige Optionen unter Experimentell funktionieren nicht ganz mit CustomData wie Texturen. (Mehr Workflow-spezifische Informationen werden in Kürze hier hinzugefügt.)
+
+<b> Verwenden der Unterobjektgruppe: </b>
+<br /> Diese Funktion beabsichtigt, mehrere abgeleitete Maschen verschiedener Objekte mit verschiedenen Modifikatoreinstellungen zusammen in einem "Kollektor" -Objekt zu verbinden. Dann beschränken Sie regelmäßig Scherben verschiedener Objekte zusammen. Aber das kann nicht die gewünschten Ergebnisse geben. Hinweis: Versuchen Sie NICHT, im Kollektorobjekt zu brechen. Es wird das Netz verschmelzen. Nur RE-USE die Scherben dort und Texturen etc. Alle Customdata Zeug funktioniert nicht dort.
+
+Eine Möglichkeit zum Experimentieren ist, alle Objekte mit Frakturmodifikatoren in eine Gruppe zu bringen und sie einem anderen Objekt als Unterobjektgruppe zuzuordnen. Dann wähle extra Partikel (OHNE Helferobjekt ...) Wenn alles gut funktioniert, bekommst du eine "zusammengeführte" Kopie aller Objekte aus der Subobjektgruppe in deinem "Sammler" Objekt. Da es dann in einem abgeleiteten ist, kannst du das zusammenzwingen. Aber Vorsicht, viele ODD Ergebnisse immer noch mit diesem passieren.
+
+<b> Arbeiten mit Glasmaterialien: </b>
+<br /> Die aktuelle empfohlene Methode ist die Verwendung der Autohide Distance, Automerge Distance, Smooth Objects und Fix Normals Einstellungen, um die Risse vor dem Zusammenstoß mit einem Objekt zu halten. Das Rigid Body Dynamics Panel hat auch Physik Deaktivierungseinstellungen, die im Timing der Trennung nützlich sind.
+
+Es gibt auch eine Technik von Bashi zum Entfernen von inneren Polygonen, bevor sie auseinanderbrechen. Dies wird vor allem für Glaswerkstoffe verwendet. Siehe den folgenden Thread: [http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2713632&viewfull=1#post2713632 Bashi's BA Post]
+
+<b> Exportieren von Animationen in andere Blender-Versionen und Spiele-Engine-Plattformen </b>
+<br />
+Die aktuell empfohlene Methode verwendet die Funktion Convert to Keyframed Objects. Dies wird die gespeicherten Scherben in reguläre Mixerobjekte umwandeln und die Animationsimulation umschalten. Das ist ähnlich wie die Idee des Backens.
+
+Eine zusätzliche Technik zu versuchen ist, mit MDD und MeshCache Modifier zu exportieren. Im Falle der Wiederverwendung in einer Blend-Datei versuchen Sie ein verbundenes Netz der Inseln.
+<br /> (Weitere Workflow-spezifische Informationen werden in Kürze hier hinzugefügt.)
+
+== Zusätzliche Workflow-Links ==
+(HINWEIS: Klicken Sie mit der rechten Maustaste auf den Link und klicken Sie auf eine neue Registerkarte oder ein Fenster, um auch auf dieser Seite zu bleiben)
+
+[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2960861&viewfull=1#post2960861 Kontrolle der Lage der Frakturen und Shard-Größe]
+
+[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2958069&viewfull=1#post2958069 Testen von Rauch aus Innengesichtern]
+
+[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2956768&viewfull=1#post2956768 Gewicht Malerei, um Fraktur zu kontrollieren]
+
+[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=2916220&viewfull=1#post2916220 Erstellen von kreisförmigen Rissen zu simulieren bullet wie Auswirkungen Frakturierung]
+
+[http://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=3053403&viewfull=1#post3053403 UE4- und Unity-Workflows für den Import von Fracture Modifier-Animationen über FBX]
 
 <br />
 
-=Known Issues=
+= Allgemeine Tipps =
 
-<b>NOTE:</b>  There are several known issues with blender and Bullet Physics in general that are not related directly to the Fracture Modifier.  The FM development team has been able to provide some workarounds via custom duplicate code and others via workflows.  Please feel free to use our support links above to report what your workflow reveals but please keep in mind some of the shortcomings in blender proper are beyond our control.  Let us know what your needs are on our support links at the top of this page and the team plus our awesome community will help as best we can.
+* Maschen sollten wasserdicht (nicht verteiler) für boolesche sein, wenn innere Oberflächen gewünscht werden. Dies ist, weil bisect mit inneren Oberflächen ist nicht sehr zuverlässig auf komplexere Objekte. Aber schnell bisect zum Beispiel lässt offene Stücke und sollte für fast alle Maschen arbeiten.
 
--Sometimes when hitting {{Shortcut|esc}} to stop a running animation, it can happen that a refracture is triggered unintentionally. This is problematic especially when you have a long fracturing process.
+* Zusätzliche Anmerkungen zu voronoi, bisect und boolean: voronoi zerlegt die Bounding Box im ersten Schritt, und im 2. Schritt machst du Boolean mit jedem Zelle Gesicht oder bisect mit jedem Zelle Gesicht oder schnelle Bisect verwendet 1 zufällige Gesicht jeder Zelle nur. Bisect + Füllung grundsätzlich schneidet das Gitter in Hälften entlang der Zelle Gesichter, die als Ebenen behandelt werden und versucht, die Innenflächen zu füllen. Bisect füllt nicht Fast bisect ist eine andere Variante, mit einer zufälligen Gesicht pro Zelle nur und im Grunde schrumpfen die verarbeitete Mesh in jedem Schritt durch Sortierung der Scherben nach ihrer Größe und Aufteilung der größten immer. Boolean und Bisect werden aus der Mixcode-Basis wiederverwendet.
 
--Older Fracture Branch blends WILL crash with the newer builds because of changes to blend loader so beware !
-The solution is to save without modifier first with the older build and then put it back on in newer build.
-Then when saved in new build with the modifier it will work again.
+* Bei der Verwendung von Clustern kann es notwendig sein, Änderungen an Parametern in Cluster-Einstellungen vorzunehmen. (TODO, untersuchen, ob dies und FM oder ein Blender Bug.)
 
--Do NOT attempt to execute fracture or change the "Use constraints" setting while a simulation is running ! A crash at the next execution of the simulation is very probably then (TODO)
-Keep in mind to change fracture settings only when the simulation is stopped and the current frame is frame 1 or the rigidbody cache startframe.
+* Diagonale Splitter können durch Drehen des Objekts im Bearbeitungsmodus erreicht werden. Da dies eine Rotation "ins Mesh" im Grunde hinzufügt. Objektdrehung nimmt dann die Splitter mit, da das Splittern nur die lokale Achse beeinflusst.
 
--Regular constraints will not work with fractured objects. This is a known limitation ATM. But if fixed constraints are used, alternatively both objects could be joined prior to fracturing them. This way there is 1 mesh, which can then be fractured with "Split Shards to Islands" option. This will decompose cells which consist of several visually unconnected parts to separate mesh islands.
+* Mit Grease Pencil gibt es eine Option, um die langen Linien / Striche als Rand-basierte Fraktur Quelle verwenden, aber es ist nicht zuverlässig. Achten Sie darauf, den Schlaganfall außerhalb des Netzes zu starten und zu beenden, das Sie brechen möchten. Erhöhen Sie auch die Einstellung "Offset" mehr, da sie die Mesh "Tiefe" entlang der Achse überschreiten muss, die Sie wählen, um den Schnitt zu projizieren. Nur globale X, Y, Z werden unterstützt, um zu projizieren.
 
--Inner UVs may fail to work as intended in more complex setups, workflows and simulations.  Please report these on a one by one basis and the team will be happy to provide recommendations.
+* Um Objekte einfacher zu brechen, kannst du die Masse skalieren, so kannst du auch Schwellenwerte skalieren und musst nicht im Bereich von 0,000x herumgehen. Höhere Massen schaffen höhere Kräfte in der Simulation.
+
+* Um die Einschränkungen zu begrenzen, verwenden Sie die pro Inselzählung oder einen Suchbereich, dies kann das Bauen zu "lang" der Einschränkungen vermeiden.
+
+* Wenn ein Bruchproblem in boolean aufgrund von Float-Einschränkungen auftritt, skaliere das Mesh im Bearbeitungsmodus und skaliere dann im Objektmodus zurück. Dies kann zumindest diese Probleme beseitigen, aber es könnte die sim beeinflussen.
+
+* Sie können die Schwellen mit einem Bruchwinkel, Abstand oder Prozentsatz überschreiben (bedeutet, wenn x Prozent aller Einschränkungen einer Insel gebrochen ist, der Rest wird auch brechen). Das ist so baumelnde Inseln fallen leichter ab.
+
+* Sie können vorhandene Netzinseln als Scherben verwenden, wenn Sie eine ungültige Punktquelle angeben, LIKE extra Partikel mit NO Helper Gruppe ausgewählt. Das wird die Inseln wiederverwenden.
+
+* Um zusammenzubauen zusammengesetzte Objekte Fraktur ein Objekt, gelten, Fraktur ein anderes, bewerben, verbinden Sie das Netz, und richten Sie einen neuen Modifikator mit ungültiger Quelle -> Sie erhalten eine Simulations-Verbindung, wo alle Scherben miteinander interagieren können. Sie sind nicht durch Objektgrenze begrenzt.
+
+* Nach anderen Modifikatoren, die dauerhaft ausgeführt werden, verlangsamt sich die Sim-Geschwindigkeit, es sei denn, sie würden ihre Ergebnisse auch während der Sim-Cache cache. Aber derzeit nur dieser Frakturmodifikator tut dies.
+
+* Unter Windows automatische Bestimmung der bbox längste Seite hat Probleme. Wenn du die Einstellung 0 eingibst, bekommst du oft Müllwerte, also ist es besser, es zu vermeiden.
+
+<br />
+
+= Einstellungen Vorschläge =
+
+<b> Vorschläge für einige Einstellungen für unterschiedliche Ergebnisse und Experimente: </b>
+
+<b> Das Versuchen der verschiedenen Algorithmen </b> würde vier Möglichkeiten umfassen.
+Es gibt mehr mit / ohne Einschränkungen, hohe / niedrige Schwellen, Bruchwinkel, brechen Prozentsatz.
+Es hängt davon ab, wie du den Effekt aussehen möchtest.
+
+<b> Höhere starre Körpermassen </b> werden wahrscheinlich einige unterschiedliche Ergebnisse schaffen.
+
+<b> Einschränkungsgrenzen </b> (Abstands- und Zahlengrenze)
+gute Einstellungen können Abstand = 1 sein und um 5-6 begrenzen.
+Sie können Abstand zu 0 setzen, dann wird es max bbox Länge als Abstand nehmen (und legen Sie es auch in der GUI, also fragen Sie sich nicht darüber ...)
+
+<b> Je mehr Einschränkungen </b> desto langsamer wird es sein, aber auch stabiler (wird nicht so leicht zusammenbrechen)
+Überprüfen Sie die Terminal-Konsole vielleicht, wie viele Einschränkungen tatsächlich gebaut wurden (es ist dort gedruckt).
+
+<b> Je kleiner die Scherben sind mit Einschränkungen </b> je kleiner der Suchradius ist, um eine vergleichbare Anzahl von Nachbarn für ein ähnliches Stabilitäts- / Simulationsverhalten zu finden. Auch mit dem kleineren Constraint-Suchradius bekommst du auch eine bessere Performance auf Objekten mit vielen kleinen Scherben, da die Einschränkungszeit viel schneller ist als bei einem größeren Radius.
+
+<b> Für Vertex-Constraint-Ziele </b> verwenden Sie kleine Werte wie 0,01 oder so oder Blender wird dazu führen, dass Blender hier hängt (TODO)
+
+<b> Wenn Schwellen oder Kontaktdistanzen zu hoch sind </b> Sie erleben gummiartiges Verhalten, schwächen Schwachstellen oder erhöhen die Masse oder verwenden das Kontrollkästchen Massenabhängige Schwellen, das multipliziert die maximale Schwelle mit dem Massenanteil der Scherbe.
+Für starre Körper Kollision Formen verwenden Convex Hull für die Scherben. Wenn Sie dies auf das Hauptobjekt anwenden, gilt es für alle Scherben automatisch.
+
+<b> Bei mehreren Objekten in einer Szene </b> kannst du auch alle Frakturmodifikatoren auf alle Objekte anwenden. Dann verbinden sie sich zu einem Objekt und verwenden als Punktquelle "Extra Partikel". Dies ist eine leere Quelle, wenn Sie auch keine zusätzliche Gruppe angeben.
+Der Modifikator erkennt dies und zerlegt es dann in die gegebenen Inseln. Das ist besonders nützlich, wenn man für Fraktionen unterschiedliche Teile benötigt.
+Dies ist zB für eine Holzwand nützlich. Es könnte Bretter und Putz haben.
+<br /> <b> HINWEIS: </b> Es ist besser, die Texturen auf die Objekte zu setzen. Boolean und Bisect sollten die UVs behandeln.
+
+<b> Mit komplexen Objekten </b> Wahrscheinlich wird Boolean sowieso scheitern und bisect füllt die Gesichter nicht zuverlässig aus (es ist der Standard-Bisect-Füllcode von Blender, der verwendet wird.)
+Dreieck füllt schrecklich, aber Edgnet-Füllung ist nicht viel besser aber (interne Bisect-Füllung Algorithmen).
+Nach einem Entwickler ist das "erwartete Verhalten". : S
+
+<b> Wenn boolean bei kleineren Objekten fehlschlägt </b> könnte es helfen, sie im Bearbeitungsmodus zu vergrößern. Dann gib es im Objektmodus wieder ab (Float-Ungenauigkeiten treten meist bei zu kleinem oder zu großem Objekt auf).
+Das Ändern des Samen könnte auch helfen, oder einfach nur die Anzahl der Scherben ändern.
+
+<b> Ein Rand Split </ b> nach Fraktur hilft bei der Glättung von Objekten.
+Denken Sie daran, alle Modifikatoren vor der Fraktur anzuwenden - schlechte Leistung sonst.
+
+<b> Gewichtsmalerei auf dem ursprünglichen Netz, um eine Vertexgruppe </b> zu definieren, kann auch mit experimentiert werden. Diese Gewichte werden mit der maximalen Schwelle multipliziert, so dass höhere gewichtete Flächen aufgrund höherer Schwellen stabiler sind.
+
+<b> Gedanken auf einem Container in einer anderen Methode. </b> Je mehr und kleinere Scherben ein Objekt zerlegt wird, desto wahrscheinlicher bekommt man keine konkaven Teile. Sie müssen Convex Hull als Rigidbody Form-Typ verwenden, weil Mesh ist sehr instabil, wenn bei aktiven / simulierten Objekten verwendet und verursacht nur Ärger. Die konvexen Rümpfe gelten nur für jede Scherbe separat, so ist es sicher, sie auf konkaven Objekten zu verwenden, da die Tatsache, dass Sie genug kleine Scherben haben, so dass Sie keine visuell konkaven Teile bekommen. Die haben noch einen konvexen Rumpf und verhalten sich auf unerwartete Weise.
+Beispiel / Test Blend - TODO Update Beispiel Datei Link
+In dieser Akte hat das äußere Objekt mehr Scherben, also sind sie weniger wahrscheinlich konkav.
+
+<b> Empfohlener Workflow für die Vorbereitung von Text für Frakturen </b> Denken Sie daran, auch mit diesem Workflow, etwas Text es besser für die Umwandlung als andere. Benutzerdefinierter modellierter Text ist das Beste für Texteffekte. Dies ist der ideale Weg, dass erfahrene Text-Animatoren es tun. <br />
+Der allgemeine Arbeitsablauf ist wie folgt: Umwandlung in Mesh, doppelte, begrenzte Auflösung, wahlweise Remesh, Geometrie in die Mitte von bbox setzen, um den Punkt der Masse auf die Mitte zu setzen (vermeidet "unerwartete" Bewegung während der Simulation, wie auf eine Seite fallen. Umgekehrt setzen Sie den Punkt der Masse irgendwo, wenn ein solches Verhalten gewünscht wird.) Dann verwenden Sie Boolesche, wenn fehlschlägt bisect + füllen oder bisect. <br />
+<b> HINWEIS: </b> Mit dem Bevel-Befehl kann es zu einer kleinen Selbstkreuzung kommen, bei der Boolesche fehlgeschlagen sind. Manuelle Bearbeitung des Netzes kann erforderlich sein. Manuelle Bearbeitung wird typischerweise in textbasierten Meshs benötigt, da die Qualität des Originaltextes nicht für die Umwandlung in Mesh geeignet ist.
+
+<br />
+
+= Bekannte Probleme =
+
+<b> HINWEIS: </b> Es gibt mehrere bekannte Probleme mit Mixer und Bullet Physics im Allgemeinen, die nicht direkt mit dem Fracture Modifier verwandt sind. Das FM-Entwicklerteam konnte einige Workarounds über benutzerdefinierte Duplikate und andere über Workflows bereitstellen. Bitte fühlen Sie sich frei, unsere Support-Links oben zu verwenden, um zu berichten, was Ihr Workflow zeigt, aber bitte im Auge behalten einige der Mängel in Mischer richtig sind außerhalb unserer Kontrolle. Lassen Sie uns wissen, was Ihre Bedürfnisse sind auf unseren Support-Links an der Spitze dieser Seite und das Team und unsere tolle Community wird helfen, so gut wir können.
+
+- Wenn man {{Shortcut|esc}} schlägt, um eine laufende Animation zu stoppen, kann es passieren, dass eine Refraktion unabsichtlich ausgelöst wird. Das ist problematisch, besonders wenn man einen langen Bruchprozess hat.
+
+-Older Fracture Branch Blends WILL Absturz mit den neueren baut wegen der Änderungen an Blend Loader so hüte!
+Die Lösung ist, ohne Modifikator zuerst mit dem älteren Build zu speichern und dann wieder in neueren Build zu setzen.
+Dann, wenn in neuem Build mit dem Modifikator gespeichert, wird es wieder funktionieren.
+
+- NICHT versuchen, Bruch auszuführen oder die Einstellung "Use constraints" zu ändern, während eine Simulation läuft! Ein Crash bei der nächsten Ausführung der Simulation ist sehr wahrscheinlich dann (TODO)
+Beachten Sie, dass die Brucheinstellungen nur dann geändert werden, wenn die Simulation gestoppt wird und der aktuelle Rahmen Frame 1 oder der starre Cache-Startrahmen ist.
+
+-Regulale Einschränkungen funktionieren nicht mit gebrochenen Objekten. Dies ist eine bekannte Begrenzung ATM. Wenn aber feste Zwänge verwendet werden, könnten beide Objekte vor dem Bruch zusammengefügt werden. Auf diese Weise gibt es 1 Mesh, die dann mit "Split Shards to Islands" Option gebrochen werden kann. Dies zersetzt Zellen, die aus mehreren visuell unverbundenen Teilen bestehen, um Mesh-Inseln zu trennen.
+
+-Inner-UVs können in komplexeren Setups, Workflows und Simulationen nicht wie geplant funktionieren. Bitte melden Sie diese nacheinander und das Team stellt Ihnen gerne Empfehlungen zur Verfügung.
+
+<b>Deutsche Sprache mangling mit freundlicher Genehmigung von Google Translate!</b>
