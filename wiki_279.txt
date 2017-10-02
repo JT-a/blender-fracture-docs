@@ -554,7 +554,7 @@ Nach einem Entwickler ist das "erwartete Verhalten". : S
 <b> Wenn boolean bei kleineren Objekten fehlschlägt </b> könnte es helfen, sie im Bearbeitungsmodus zu vergrößern. Dann gib es im Objektmodus wieder ab (Float-Ungenauigkeiten treten meist bei zu kleinem oder zu großem Objekt auf).
 Das Ändern des Samen könnte auch helfen, oder einfach nur die Anzahl der Scherben ändern.
 
-<b> Ein Rand Split </ b> nach Fraktur hilft bei der Glättung von Objekten.
+<b> Ein Rand Split </b> nach Fraktur hilft bei der Glättung von Objekten.
 Denken Sie daran, alle Modifikatoren vor der Fraktur anzuwenden - schlechte Leistung sonst.
 
 <b> Gewichtsmalerei auf dem ursprünglichen Netz, um eine Vertexgruppe </b> zu definieren, kann auch mit experimentiert werden. Diese Gewichte werden mit der maximalen Schwelle multipliziert, so dass höhere gewichtete Flächen aufgrund höherer Schwellen stabiler sind.
