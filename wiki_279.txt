@@ -1,16 +1,15 @@
-==Fracture Modifier Documentation - Note: This is a DRAFT==
-for blender 2.79, Fracture Modifier branch merged with official release
-<br /><br />
+==Fracture Modifier Documentation==
+for blender 2.79, Fracture Modifier branch merged with official release of blender
+<br /><br /><br />
 
-=Basic Concept=
-
-[[File:Scorpion81-User_Fracture_Documentation_df-splash_med.png|center|text-below|400px|Splash with example]]
+[[File:Scorpion81_Fracture_Modifier_2.79_custom_splash.jpg‎|center|text-below|400px|Splash with example]] 
 
 <br />
+=Basic Concept=
 
-<b>This tool makes it fun to break things!  Fracture!  Shatter!  Explode!  Destroy!  Now including bending metal, deforming plastic and fake cloth with physics rigid bodies!</b>  Many options are available to choose the type of resulting objects and how they break apart and animate. Custom helpers allow advanced detail control and shaping of the fracturing pattern. It is a modifier so it is nondestructive to the original geometry unless applied and it can interact with other modifiers in the stack.  The modifier works seamlessly with the Bullet Physics library to make simulations and animations.
+<b>This tool makes it fun to break things!  Fracture!  Shatter!  Explode!  Destroy!  Now including bending metal, deforming plastic and fake cloth made with physics rigid bodies!</b>  Many options are available to choose the type of resulting objects and how they break apart and animate. Custom helpers allow advanced detail control and shaping of the fracturing pattern. It is a modifier so it is nondestructive to the original geometry unless applied and it can interact with other modifiers in the stack.  The modifier works seamlessly with the Bullet Physics library to make simulations and animations.  With the added power of a sophisticated contraints system it is a feature rich destruction platform.
 
-<b>The modifier is very fast</b> by itself in the 1,000 and above shard range and it keeps all the resulting shards in the modifier so they do not clutter the Outliner.  The fast workflow gives artists a powerful tool for experimentation and fine tuning results for both still images of fractured objects and physics based destruction animations.
+<b>The modifier is very fast</b> by itself in the 1,000 and above shard range and it keeps all the resulting shards in the modifier so they do not clutter the Outliner.  The fast workflow gives artists a powerful tool for experimentation and fine tuning results for both still images of fractured objects and physics based destruction animations and visual effects work.
 
 <b>The Fracture Modifier is integrated closely with the Bullet Physics library subsystem</b> in Blender for animation and simulation purposes.  It has an advanced automatic and easily customized constraint building system with several settings to artistically control the results of the simulation.
 
@@ -36,7 +35,7 @@ The basic workflow is:
 
 Note: make sure there is a passive rigid body ground plane below the object for it to collide with so it will separate into the shards.
 <br /><br />
-For all settings "above" the execute button and the point source and fracture percentage, you always need to re-execute the modifier on the rigid body cache start frame, mostly frame 1, to see an effect.
+For all settings "above" the execute button and the point source and fracture percentage, you always need to re-execute the modifier on the rigid body cache start frame, usually frame 1, to see an effect.
 |}
 
 <br />
@@ -48,26 +47,26 @@ For all settings "above" the execute button and the point source and fracture pe
 
 * IRC chat support channel #blenderfracture on freenode.net or at http://webchat.freenode.net   
 
-==Graphicall.org Builds==
+* [https://www.facebook.com/FractureModifier/ Facebook Page]
 
-*http://www.graphicall.org/1148  Windows 64 bit
+* Blender on Stack Exchange: [https://blender.stackexchange.com/search?q=fracture+modifier Fracture Modifier search]
 
 ==DF-VFX Hosted Builds==
 
 *http://df-vfx.de/fracturemodifier/ Windows, Linux and Mac OS X - Thanks to DF-VFX for hosting these
-*http://df-vfx.de/fracturemodifier/learn-fracturing/ DF's tutorial page
+*http://df-vfx.de/fracturemodifier/learn-fracturing/ DF-VFX's excellent tutorials page
 
 (NOTE: Current builds are merged with Blender v2.79 and in general the FM builds merged with official releases are usually available a week or two after the official releases.  Only 64 bit builds are provided.)
 
 ==Other Links==
-(NOTE: Jen's build is always the latest development and testing build.  It is only in 64 bit Linux with static libs for use on most distros. Use our Blender Artist forum thread to watch for when those are released.)
+(NOTE: Jen's build is always the latest development and testing build.  It is only in 64 bit Linux with static libs for use on most distros. Use our Blender Artist forum thread to watch for when those are released.  Sometimes Kai's Graphicall build will provide a development build also.)
 
 *http://www.jensverwiebe.de/Blender/blender_fracture_modifier_linux64_latest.tar.xz      Linux 64 bit build
-
+*http://www.graphicall.org/1148  Windows 64 bit Graphicall.org Build
 
 ==Source Code==
 
-The Fracture Modifier is a special branch of Blender.  It uses methods that are currently not compatible with Blender's internal storage capabilities. The FM branch is merged with and can be used in place of official releases with complete compatibility of other release features.  A "config" folder under the 2.78 folder can be created by the user to avoid sharing settings with other installed Blender versions. This way the FM can be tested separately. 
+The Fracture Modifier is a special branch of Blender.  It uses methods that are currently not compatible with Blender's internal storage capabilities. The FM branch is merged with and can be used in place of official releases with complete compatibility of other release features.  A "config" folder under the 2.79 folder can be created by the user to avoid sharing settings with other installed Blender versions. This way the FM can be tested separately. 
 
 <b>GitHub repo</b>
 https://github.com/scorpion81/blender-fracture/tree/fracture_modifier
@@ -81,6 +80,31 @@ Helper addon and pie menu source code https://github.com/scorpion81/blender-frac
 If you have issues building the Fracture Modifier branch please ask for help on our Blender Artists thread or in our IRC chat room mentioned above or check the [https://wiki.blender.org/index.php/Dev:Doc/Building_Blender Building Blender wiki page].
 
 <b>NOTE:</b>  Our exciting under development features are available if you build yourself from the source code repo.  Feel free to ask questions about features in development on our BA thread mentioned elsewhere here.
+
+<br />
+
+=New Improvements=
+Recent improvements, additions and clarifications are here for now but eventually will be integrated into the rest of the docs.
+
+<b>Some Improvements in the v2.79 Based Build:</b>
+*GUI workflow adjustments, always improving this for those with a need for speed!
+*Cutting edge algorithm and settings for material types bending metal, deforming plastic, fake cloth
+*[https://en.wikipedia.org/wiki/Plasticity_(physics) Deforming Plastic] settings provide the ability to control shape response yield
+*The new material types are rigid body based so they are fully physics sim compatible
+*Improved Fracture Helpers addon and a newly added pie menu for 3D View workflow
+*New addon features include a time/speed controller and Dynamic Paint controlled features
+*The addon's automatic Smoke/Dust/Debris system has been improved to use Dynamic Paint
+*Continued development of advanced constraint management system beyond standard blender
+*More settings now also work on clusters as well
+*New Automerge setting used for material type results and other clever combinations
+*Boolean Solver is now selectable between blender's internal Carve or BMesh methods
+*Improved Convert To Keyframed Objects with new additional settings
+*Trigger management improvement especially for "kinetic" interaction and stopping
+*Shadow Catching is now available in blender 2.79 and now usable in the FM workflow
+
+NOTE: The Fracture Modifier is a sophisticated tool and platform intentionally designed with experimentation and fine control in mind.  So unexpected and undesirable results are occasionally part of the creative process and workflow. Fracture ON! 
+
+<br />
 
 =Fracture Settings Panel=
 (in Properties Editor Physics Tab)
@@ -123,7 +147,7 @@ Voronoi + Boolean (default) - Use voronoi and boolean intersection as fracture a
 Fast Bisect + Fill - Use the faster but different bisect algorithm and fill cut faces<br />
 Fast Bisect - Use a faster but more inaccurate bisect algorithm, also creates uglier shards<br />
 
-<b>Boolean Solver:</b> Selections are Carve or BMesh. Carve can handle some nonmanifold cases a bit better.  BMesh is sometimes faster but it can have issues with some meshes.  It is best to experiment and see which one works better for different meshes.
+<b>Boolean Solver:</b> Selections are Carve or BMesh. Carve can handle some non-manifold cases a bit better.  BMesh is sometimes faster but it can have issues with some meshes.  It is best to experiment and see which one works better for different meshes.
 
 <b>Shard Count:</b> For uniform mode only. It determines how many raw voronoi cells are created over the bounding box. Actual shard count may be lower due to intersection with actual geometry.
 
@@ -135,7 +159,7 @@ Fast Bisect - Use a faster but more inaccurate bisect algorithm, also creates ug
 
 <b>Constraint Type:</b> Type of rigid body constraint between shards and inside clusters.  Default is Fixed, glue rigid bodies together.<br />
 Note: there are several constraint types from the Bullet physics integration.<br />
-Constraint type is applied between all constraints. Cluster is only between shards which reside in different clusters. Constraint type is between constraints with same cluster ID. Use point constraints for cloth tearing for example.  Bending for example will just look more natural and better with constraints which also bend some.
+See Understanding Constraints section below.
 
 <b>Cluster Constraint Type:</b> Type of rigid body constrain between clusters, default fixed, glue rigid bodies together. Note: there are several and they are from Bullet.
 
@@ -182,17 +206,24 @@ You can create a particle system on another object, with the same recommended se
 Each vertex of one or more other objects become source points for fracturing. You add those helper objects to a group and specify it as Extra Group. If you have both particles and vertex options selected, you get a combined point cloud. Here also better use low poly objects.
 
 ====Grease Pencil==== 
-<b>WARNING:</b> may crash! DO NOT MOVE object by hand out of "grease pencil drawing area," not even partially! At the moment it is not recommended to use.<br /> 
-If you use despite this warning: You can draw points or SHORT lines. Each stroke becomes a point cloud point. Here it helps to limit the total amount of source points with the "Percentage" setting below "Extra Group". With longer strokes you otherwise risk a huge amount of misshaped shards, a long fracturing process and possibly even crashes either in fracture or in the simulation.
+<b>WARNING:</b> highly experimental feature - may crash! DO NOT MOVE object by hand out of "grease pencil drawing area," not even partially!<br /> 
+To experiment with this feature draw points or SHORT lines. Each stroke becomes a point cloud point. Here it helps to limit the total amount of source points with the "Percentage" setting below "Extra Group". With longer strokes you otherwise risk a huge amount of misshaped shards, a long fracturing process and possibly even crashes either in fracture or in the simulation.
+
+Use Greasepencil Edges:(WIP, for testing purpose only for now, currently not combineable with other pointsources.) Use GP lines which are internally converted into cutter planes. <br />
+Note: strokes MUST start and end outside the object which they are drawn on, and works with Greasepencil in OBJECT mode only.
+
+Greasepencil Offset: "Length" of the cutterplane, must exceed object to be cut.<br /> 
+Greasepencil Decimate (reduces amount of points in a stroke being used for the cutter plane.<br />
+Cutter Axis: currently it can only project the line to a plane along global X, Y, or Z.
 
 ====Uniform====
 (default)Use a random generated point cloud generated over the whole bounding box.
 
 ====Additional Advanced Settings====
 
-<b>Extra Group:</b> Specify a extra particle system group or extra vertex group from another object. This must be put into a group and then it can be linked to the modifier to add further detail.  See also Extra Particles, Extra Vertices and Additional Workflow Information sections.
+<b>Extra Group:</b> Specify an extra particle system group or extra vertex group from another object. This must be put into a group and then it can be linked to the modifier to add further detail.  See also Extra Particles, Extra Vertices and Additional Workflow Information sections.
 
-<b>Sub Object Group:</b> Join multiple derived meshs of different objects with different modifier settings together in a "collector" object.  See also Advanced Workflow Information section.
+<b>Sub Object Group:</b> Join multiple derived meshes of different objects with different modifier settings together in a "collector" object.  See also Advanced Workflow Information section.
 
 <b>Cutter Group:</b> A set of objects to make boolean cuts against.
 
@@ -206,23 +237,21 @@ If you use despite this warning: You can draw points or SHORT lines. Each stroke
 
 <b>Inner Vertex Group:</b> Vertex group name for defining inner vertices. Will contain vertices of inner faces. Used for Boolean and Bisect + Fill only.
 
-<b>Inner Crease:</b> generate a crease at edges of inner faces. During a physics simulation inner crease forms hard edges for smooth inner faces. This works well with microdisplacement setup.  It may be used in conjunction with the Sub Surface modifier so for better control of the Catmull-Clark subsurface without needing to fallback to simple subsurface.
+<b>Inner Crease:</b> generate a crease at edges of inner faces. During a physics simulation inner crease forms hard edges for smooth inner faces. This works well with microdisplacement setup.  It may be used in conjunction with the Sub Surface modifier for better control of the Catmull-Clark subsurface to keep straight edges without needing to fallback to simple subsurface.<br />
+(EG: useful when having microdisplacement, which is controlled via subdiv modifier and texture, after the FM)
+
 <br />
 
 =Fracture Constraint Settings Panel for Simulations=
 
- [[File:User_Fracture_Documentation_Fracture_Simulation.png|right|287px|Fracture Simulation]]
-<b>Note:</b> The Fracture Modifier branch has an advanced constraint management system far superior than the default one in blender.  That combined with Bullet Physics simulations provides a superior level of creative control in shard management and destruction creation.
+[[File:User_Fracture_Documentation_Fracture_Simulation.png|right|287px|Fracture Simulation]]
+<b>Note:</b> The Fracture Modifier branch has an advanced constraint management system far superior than the default one in blender.  That combined with Bullet Physics simulations provides a superior level of creative control in shard management and destruction creation.  See the Understanding Constraints section below for more detailed information on settings and uses.
 
 <b>Use Constraints:</b> When activated it generates a powerful Bullet based custom constraints system. It instantly creates constraints between all shards of the object. In general you can specify a searching radius or contact distance in Blender units and limit the shard count(per island) to reduce the number of constraints and speed up the simulation. 
 
-Alternatively you can create more constraints to get a more stable object and shards in the simulation. The limit determines how many other shards can be connected simultaneously to a shard. The contact distance can be lowered to avoid "long range" constraints that connect very far apart objects together. Both limit the total constraint count which affects simulation behavior and speed. 
-
-Less constraints means less stable but faster simulation. More constraints means a slower sim but more stable object. With an equivalent threshold, shards should keep together longer this way.
-
 <b>Breakable:</b> Constraints can be broken if it receives an impulse above the threshold.
 
-<b>Constrained Collision:</b> Let constrained shards collide with each other.  The constrained objects whose constraints are still intact will not collide with each other.  With this new setting it allows for selfcollision with Fracture Modifier "fake cloth" where pieces are still half attached to the mesh for example.  Another clever use would be with a "ring" of cubes, where 1 cube is missing so kind of an open loop, that demonstrates that the connected cubes form a "constraint island."  If they break somewhere, the constraint islands will be split.  So let's say it breaks into 2 pieces, you then get 2 constraint islands.  Cubes being in different islands will collide but not if they are in the same island. With constrained collision they will always collide.
+<b>Constrained Collision:</b> Let constrained shards collide with each other.  The constrained objects whose constraints are still intact will not collide with each other. EG: faking selfcollisions when using point constraints and Automerge to fake cloth. See Understanding Constraints section below for more detailed information. 
 
 <b>Use Compounds:</b> This is an experimental setting that uses Bullet method compounds instead of fixed constraints.  Supposedly this is faster with less wobbling.
 
@@ -236,16 +265,12 @@ distance between the vertices of nearby shards.
 
 <b>Search Radius:</b> Limit search radius up to which 2 mesh islands are being connected, 0 for entire bounding box. Note: This is an older setting that limits the amount of maximum connections per mesh island and the radius in which shards are being searched to connect with the current shard being looked at. 
 
-<b>Compound Breaking Settings</b><br />
+<b>Constraint Breaking Settings -</b><br />
 <b>Threshold:</b> It determines what force must affect the constraint in order to break it. higher threshold means it will need more force to break the constraint, It is recommended lower those thresholds when using the default mass or to increase mass to get more easy breaks. This avoids "rubber" behavior which occurs on high thresholds low masses and "long range" constraints mostly.
 
 <b>Cluster Breaking Threshold:</b> A high default value applied to members INSIDE a cluster to fake secondary fracture. Tertiary and higher levels are not supported, as you cannot cluster clusters.
 
-<b>Minimum Impulse:</b> Determines how strong the remaining impulse must be for continuing damage propagation.
-
-<b>Stability Factor:</b> Determines how stable an objec is.  0 means minimum mass/minimum mass+maximum mass.  1 means maximum threshold everywhere.
-
-===Constraint Special Breaking Settings===
+<b>Constraint Special Breaking Settings -</b><br />
 <b>Percentage:</b> If the given percentage of the constraints per island is broken, then ALL remaining constraints of this island will break automatically. Setting it to 0 disables it. Set to high values to completely break all constraints which might dangle around after collision, lower values makes the object break more easily, 25 means if only 25% are broken, break the rest too for example.
 
 <b>Angle:</b> If an angle greater than x degrees occur between two islands, break the according constraint. This restricts bending behavior of constraints, which will break then when bent too much.
@@ -267,7 +292,7 @@ NOTE: all 3 settings are now also available for clusters.
 
 <b>Use Mass Dependent Thresholds:</b> Reduce the given Threshold value according to ratio of the current shard to a shard with maximum mass.  Like a shard with mass x has Threshold 100, mass x/2 has 50 then. This allows constraints to break more easily without changing the masses and avoids rubber behavior.
 
-<b>Constraint Deform Settings</b>
+<b>Constraint Deform Settings -</b>(See Understanding Constraints below)
 <br /><b>Deforming Angle:</b> Angle in degrees above which constraint should keep its deformation.
 <br /><b>Deforming Distance:</b> Distance above which constraint should keep its deformation.
 <br /><b>Cluster Deforming Angle:</b> Angle in degrees above which cluster constraint should keep its deformation.
@@ -276,29 +301,24 @@ NOTE: all 3 settings are now also available for clusters.
 <br /><b>Weighted Deforming Distance:</b> Modify deform distance by threshold weights.
 <br /><b>Deforming Weakening Factor:</b> Multiplies the breaking threshold in each iteration with 1.0 factor in order to weaken it at deform, 0 to disable.
 
-<b>Workflow Side Note:</b> Deform is used to retain the deformed shape to fake metal like in persistent deformation.  At a minimum there is no flipping back to original shape but, it might bend even further if angle is too low for example.
-
-Fake Cloth happens mostly with the Automerge Distance and Perform Merge settings.  Using those two settings results in metal like sheets by "persistently" deforming the Fake Cloth by rebuilding the constraints on a frame by frame basis.  One builds basically on top of each subsequent one.  The workflow is first adjust the settings to have Fake Cloth.  Then add deform settings to make the deformations more persistent.
-
-The deform settings could also be used without Automerge Distance to have something deforming with its original gaps.  One use case would be making broken concrete with bent rebar inside.  The rebar would needed to be added visually.
 <br />
 
-
 =Fracture Utilities Panel=
+(See Understanding Fracture Utilities below also)
 
 <b>Filter Group:</b> Basically this is a group of objects (only spheres work well. Only use a simple radius here) which reveal "Autohide" cracks on the fly interactively.  So if you scale such an object, you could fake appearing cracks. But this is barely noticeable in viewport(only with Automerge and show "Wire" on solid objects.) But when rendered it is much more noticeable.
 
 <b>Autohide Distance:</b> Distance between faces below which both opposing faces should be hidden.
 
 <b>Automerge Distance:</b> Distance between faces below which vertices of both faces should be merged.  
-<br />Note: Use the above two settings with Smooth Objects and Fix Normals to better hide cracks in glass for example.  There is a performance cost when using this. For more information see the Advanced Workflow Information section below.
+<br />Note: Use the above two settings with Smooth Objects and Fix Normals to better hide cracks in glass for example.  There is a performance cost when using this. Fix Normals should be deactivated if using high Automerge Distances and Voronoi + Bisect.  For more information see the Advanced Workflow Information section below.
 
 <b>Keep Distortion:</b> Whether or not to make the distortion on torn merged shards persistent. Use to make more interesting crack edges.
 
 <b>Perform Merge:</b> Whether or not to actually weld the prepared Automerged geometry. It actually welds the geometry to get smoother looking normals when Shade Smooth is enabled(which should be used for Fake Cloth, Subsurface and Smooth modifiers also.)
 
 <b>Fix Normals:</b>(WIP) This copies the closest normals from the source object to the fractured object and hides cracks better on smooth objects.
-<br />Note: works correctly only if there are no modifiers before the Fracture Modifier!
+<br />Note: works correctly only if there are no modifiers before the Fracture Modifier! It should be deactivated if using high Automerge Distances and Voronoi + Bisect.
 
 <b>Normals Search Radius:</b> Radius in which to search for valid normals.  Higher numbers slow the process down.  See also Settings Suggestions section below.
   
@@ -308,41 +328,46 @@ The deform settings could also be used without Automerge Distance to have someth
 
 <br />
 
-[NU] PUT IN THE THE CHANGED PHYSICS PANELS HERE!
-<scorpion81> well i added more boxes (like propagate trigger, dissolve constraints etc) in general (since the last docs update)
-<JTa-> and you also went through the docs for me a few months ago...I still have those changes also...
-<JTa-> in the physics settings?
-<scorpion81> in rigidbody settings
-<scorpion81> Propagate Trigger, Dissolve Constraints, Dynamic Trigger, Dissolve Plastic Constraint, Stop Trigger
-<scorpion81> Ghost is in the "Advanced" section now too, but the setting was there earlier already
+=Additional Panels Added with the Modifier and Customizations=
 
-[END PHYSICS NEW SETTINGS]
+[[File:User_Fracture_Modifier_Documentation_RigidBody.png|left|text-above|272px|Main Panel]]
+<b>Note:</b> A Rigid Body World is added when the first fracture is executed.
+<br />Also a Smoke Modifier and panel is automatically added when the smoke/dust/debris system is used from the Fracture Helpers addon.
 
-=Additional Panels Added with the Modifier=
-Note: A Rigid Body World is added when the first fracture is executed.
+Additional standard Physics panels are added with this modifier due to its integration with the Bullet Physics library for animation simulations.  They include Rigid Body, Rigid Body Collisions and Rigid Body Dynamics.  See the Bullet Physics documentation for more information on standard settings.  
 
-Additional standard Physics panels are added with this modifier due to its integration with the Bullet Physics library for animation simulations.  They include Rigid Body, Rigid Body Collisions and Rigid Body Dynamics.  See the Bullet Physics documentation for more information on settings.  
+<b>Custom Settings for Physics Panels Added by Fracture Modifier -</b>
 
-Also a Smoke Modifier and panel is automatically added when the smoke/dust/debris system is used from the Fracture Helpers addon. 
+<b>Existing panel: Rigid Body</b><br />
+Type: Active<br />
+Added tickboxes "Triggered and Trigger"<br />
+<b>Triggered:</b> "Allow kinematic state being reset by collisions"<br />
+<b>Trigger:</b> "Can trigger activation of other animated objects, which are set up to be triggered"
+
+<b>New panel: Rigid Body Trigger Advanced</b><br />
+Added tickboxes "Ghost, Propagate Trigger, Dissolve Constraints, Dynamic Trigger, Dissolve Plastic Constraints and Stop Trigger"
+
+<b>Ghost:</b> "Do not collide with object, but can activate other animated objects"<br />
+Goes through other rigid bodies, but generates collision info (and thus may activate objects together with trigger, while not pushing them away.)
+
+<b>Propagate Trigger:</b> "Can propagate a trigger activation impulse received from a trigger ACROSS triggerable objects, use clusters for INNER object propagation!"<br />
+If a shard with a trigger property hits shards of an object with the propagate trigger enabled, the hit shards will not only be activated, but become triggers in the moment of their activation as well, they can propagate the trigger impulse to further triggered objects.
+
+<b>Dissolve Constraints:</b> "Dissolves constraints on shards of ths trigger TARGET"<br />
+This is a property for a target object and means all constraints attached to activated shards will break instantly upon being hit.
+
+<b>Dynamic Trigger:</b> "Triggers a dynamic fracture independently of force threshold"<br />
+Allows breaking of dynamic fracture objects independently of the dynamic threshold force. Usually this means they will break instantly when being hit by an object with this property enabled. Together with Limit impact, if the trigger object is smaller than the triggered one, you can limit the area of the point cloud. This creates an irregular breaking pattern.
+
+<b>Dissolve Plastic Constraints:</b> "Dissolves plastic constraints on shards of this trigger target, only relevant for external mode"<br />
+Same logic as Dissolve constraints, but applies to plastic constraints only and only in External fracture mode.
+
+<b>Stop Trigger:</b> "Can trigger deactivation of other simulated objects, which are set up to be triggered"<br />
+Upon contact with an object with this property, the affected shard will instantly stop moving and become kinematic IF its speed is below the Linear or Angular Velocity in the Rigid Body Dynamics Section. Works also if the value is greyed out if Enable Deactivation is deactivated. It is similar to Enable Deactivation, but that one seems too unreliable as it will not stop the objects by making them kinematic. They will only sleep and might be reactivated upon further contact, while stopped objects remain kinematic and thus stopped, though other shards may still collide with them properly.
 
 <br />
 
-=New Improvements and Workflow Information=
-Recent improvements, additions and clarifications are here for now but eventually will be integrated into the rest of the docs.
-
-<b>Some Improvements:</b>
-*GUI workflow adjustments
-*New Breakable-checkbox by the Constraints-settings (can make constraints unbreakable)
-*More cluster breaking rules
-*Improved “Convert to keyframed objects”
-*Now after “Execute fracture” timeline autojumps to frame 1
-*New Object-Ghost-Mode (Collision detection without collision)
-*Optimized fix normals 
-*Autohide optimized (Clearer glass fractures)
-*Trigger now supports constrained objects and automatic enabling/disabling of active/passive shards
-*New Clusters solver iterations override (higher value reduces rubbery motion)
-
-<b>Understanding Clusters and Shards.</b>
+=Understanding Shards and  Clusters=
 If you have 100 shards and 10 clusters, you get 10 clusters of 10 shards each.  Important: Clusters work only in conjunction with constraints, so enable them as well. (They are just glued together with a separate, higher threshold) Changing the cluster number affects just... the cluster number yes, that is intended. 
 
 Changing cluster number basically changes the size and shape of the clusters while retaining the same shard count (you will have to change both if you want more shards AND clusters)  And changing shard count or cluster count requires a refracture, because the assignment which shard belongs to which cluster happens in fracture step already and according to this they will be connected if constraints are enabled. You can also use the seed value to change the fracture shapes (a bit) and so the clusters resulting from them too.
@@ -361,7 +386,51 @@ It adds a Tool Shelf tab named Fracture. This addon makes it easier to use shape
 
 There is also a pie menu based on the Fracture Helpers addon.  You can find more information and a download link on our [https://blenderartists.org/forum/showthread.php?343637-Custom-Build-Blender-Fracture-Modifier&p=3227562&viewfull=1#post3227562 BA forum thread].
 
-<b>More new docs coming soon!</b>
+<b>More new shard and cluster docs coming soon!</b>
+
+<br />
+
+=Understanding Constraints=
+
+The Constraint Type setting can now also override the type of constraints being generated between all shards. Fixed is the default and mainly useful for "solid" shattering. Point can be useful in conjunction with the new Automerge feature to "fake" cloth and manage deformation as in bending metal and deforming plastic.
+
+Constraint type is applied between all constraints. Cluster is only between shards which reside in different clusters. Constraint type is between constraints with same cluster ID. Use point constraints for cloth tearing for example.  Bending for example will just look more natural and better with constraints which also bend some.
+
+With the new Constrained Collision setting it allows for self-collision with Fracture Modifier "Fake Cloth" where pieces are still half attached to the mesh for example.  It can fake selfcollisions when using point constraints and Automerge as one way to make fake cloth for example. Another clever use would be with a "ring" of cubes, where 1 cube is missing so kind of an open loop, that demonstrates that the connected cubes form a "constraint island."  If they break somewhere, the constraint islands will be split.  So let's say it breaks into 2 pieces, you then get 2 constraint islands.  Cubes being in different islands will collide but not if they are in the same island. With constrained collision they will always collide.
+
+Alternatively you can create more constraints to get a more stable object and shards in the simulation. The limit determines how many other shards can be connected simultaneously to a shard. The contact distance can be lowered to avoid "long range" constraints that connect very far apart objects together. Both limit the total constraint count which affects simulation behavior and speed. 
+
+Less constraints means less stable but faster simulation. More constraints means a slower sim but more stable object. With an equivalent threshold, shards should keep together longer this way.
+
+With Constraint Deform Settings Angle and Distance(the most useful settings) make deformation persistent when exceeding certain angle or distance. Cluster Angle, Cluster Distance should apply to shards of different clusters only, but not very useful in practice currently. Weighted Deform Angle, Weighted Distance modify the deform angle and distance by the threshold weight map. Probably also not very useful in practice currently.
+
+Deform Weakening Factor multiplies the threshold(!) with 1-factor each time a deformation is made persistent (angle or distance exceeded), to simulate that continously bending metal in opposite directions might break it in the middle.
+
+Deform Workflow Side Note: Deform is used to retain the deformed shape to fake metal like in persistent deformation.  At a minimum there is no flipping back to original shape but, it might bend even further if angle is too low for example.
+
+Fake Cloth happens mostly with the Automerge Distance and Perform Merge settings.  Using those two settings results in metal like sheets by "persistently" deforming the Fake Cloth by rebuilding the constraints on a frame by frame basis.  One builds basically on top of each subsequent one.  The workflow is first adjust the settings to have Fake Cloth.  Then add deform settings to make the deformations more persistent.
+
+The deform settings could also be used without Automerge Distance to have something deforming with its original gaps.  One use case would be making broken concrete with bent rebar inside.  The rebar would need to be added visually.
+
+<b>Special Note About Constraints:</b>  the advanced constraints system of the Fracture Modifier can be used without actually fracturing and object.  Just set the shard count to 1 and then setup relationships between multiple objects via grouping, parenting and using empties then Execute Fracture.  This combined with constraint settings will allow some really advanced object interactions without any individual object fracturing or breaking apart into shards.  For example an animation can be made of a cup being shaken and dice rolling around inside it.  COOL STUFF!
+
+<b>More new constraint docs coming soon!</b>
+
+<br />
+
+=Understanding Fracture Utilities=
+
+Autohide and Automerge are reworked.  Use autohide for hiding inner faces as usual, but additionally in conjunction with Automerge distance to "track" verts nearby up to the autohide distance(to detect shared verts.) 
+
+Use Automerge to keep shared verts together until the automerge dist is exceeded. (May mess up the mesh if having too large values in certain situations!)
+
+Keep Distortion tries to keep deformations happening at "tearing" persistent. Might show unpredictable behavior in subsequent runs because there is an optimization step internally on the last frame to detect unchanged shared vertices which are not taken into account again in the subsequent runs. Changing Autohide Distance might solve this temporarily if issues arise. Use with care...
+
+Perform Merge actually welds geometry which is kept closely together by Automerge and Remove doubles. Warning: changes topology and might be slow! Autohide also changes topology.
+
+Fake cloth is best achieved with Voronoi+Bisect on flat or VERY thin(Solidify Modifier) geometry. It is not so good with solid geometry, but could work in some cases. Avoid methods which create inner faces here, use only Voronoi + Bisect or Fast Bisect here ideally.
+
+Convert to Keyframes now pops up a dialog. Start / End frame are selectable, as well as step size. Additionally a threshold can be added. The ratio of change between old and new loc/rot before keyframe is set, roughly speaking. The lower the threshold the more keyframes should be set(also between steps), threshold = 0, set only keyframes at each step. There are step keyframes and threshold based adaptive keyframes in between. Use Handles smoothes step handles and makes adaptive handles vector. This is useful with larger step sizes to avoid loosing some detailed collision info while setting keyframes.
 
 <br />
 
@@ -418,7 +487,7 @@ This can be used to get more advanced fractures and control. See the Other Exper
 <br />Currently inner faces do not get a UV. Inner materials can be assigned to new filled in faces from boolean or bisect+fill methods. Existing UVs on outer faces are preserved for the most part. Note: some options under Experimental do not quite work with CustomData like textures currently.(More workflow specific information will be added soon here.)
 
 <b>Using the Sub Object Group:</b> 
-<br />This feature is intended to join multiple derived meshs of different objects with different modifier settings together in a "collector" object. Then theoretically constraint shards of different objects together. But this may not give the desired results. Note: DO NOT attempt to fracture in the collector object. It will mess up the mesh. Only RE-USE the shards there, and textures etc. All customdata stuff does not work there.
+<br />This feature is intended to join multiple derived meshes of different objects with different modifier settings together in a "collector" object. Then theoretically constraint shards of different objects together. But this may not give the desired results. Note: DO NOT attempt to fracture in the collector object. It will mess up the mesh. Only RE-USE the shards there, and textures etc. All customdata stuff does not work there.
 
 One way to experiment is to put all objects with fracture modifiers into a group and assign it to another object as Sub Object Group.  Then choose extra particles (WITHOUT a helper object....) If all works well you get a "merged" copy of all objects from the sub object group in your "collector" object. Since it is then in one derivedmesh, you can constraint that together. But beware, many ODD results still happen with this. 
 
@@ -532,6 +601,8 @@ The general workflow is as follows - convert to mesh, remove doubles, limited di
 
 =Known Issues=
 
+<b>NOTE:</b>  There are several known issues with blender and Bullet Physics in general that are not related directly to the Fracture Modifier.  The FM development team has been able to provide some workarounds via custom duplicate code and others via workflows.  Please feel free to use our support links above to report what your workflow reveals but please keep in mind some of the shortcomings in blender proper are beyond our control.  Let us know what your needs are on our support links at the top of this page and the team plus our awesome community will help as best we can.
+
 -Sometimes when hitting {{Shortcut|esc}} to stop a running animation, it can happen that a refracture is triggered unintentionally. This is problematic especially when you have a long fracturing process.
 
 -Older Fracture Branch blends WILL crash with the newer builds because of changes to blend loader so beware !
@@ -542,3 +613,5 @@ Then when saved in new build with the modifier it will work again.
 Keep in mind to change fracture settings only when the simulation is stopped and the current frame is frame 1 or the rigidbody cache startframe.
 
 -Regular constraints will not work with fractured objects. This is a known limitation ATM. But if fixed constraints are used, alternatively both objects could be joined prior to fracturing them. This way there is 1 mesh, which can then be fractured with "Split Shards to Islands" option. This will decompose cells which consist of several visually unconnected parts to separate mesh islands.
+
+-Inner UVs may fail to work as intended in more complex setups, workflows and simulations.  Please report these on a one by one basis and the team will be happy to provide recommendations.
