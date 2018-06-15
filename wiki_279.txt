@@ -1,5 +1,5 @@
 ==Fracture Modifier Documentation==
-for blender 2.79, Fracture Modifier branch merged with official release of blender
+for blender 2.79b, Fracture Modifier branch merged with official release of blender
 <br /><br /><br />
 
 [[File:Scorpion81_Fracture_Modifier_2.79_custom_splash.jpg‎|center|text-below|400px|Splash with example]] 
@@ -45,26 +45,31 @@ For all settings "above" the execute button and the point source and fracture pe
 
 * [http://blenderartists.org/forum/showthread.php?343637 BlenderArtists.org support forum thread]
 
-* IRC chat support channel #blenderfracture on freenode.net or at http://webchat.freenode.net   
+* [http://kaikostack.com/fracture/ Kostack Studio hosted download]
 
-* [https://www.facebook.com/FractureModifier/ Facebook Page]
+* [https://drive.google.com/folderview?id=0Bwkun-jSiZ-RMjhmQUlSR3JZTms&usp=sharing#list Google Drive mirror (outdated)]
+
+* IRC chat support channel #blenderfracture on freenode.net or at [http://webchat.freenode.net/?channels=%23blenderfracture&uio=d4 Freenode Browser Webchat]   
 
 * Blender on Stack Exchange: [https://blender.stackexchange.com/search?q=fracture+modifier Fracture Modifier search]
 
-==DF-VFX Hosted Builds==
+==Video Tutorials==
 
-*http://df-vfx.de/fracturemodifier/ Windows, Linux and Mac OS X - Thanks to DF-VFX for hosting these
-*http://df-vfx.de/fracturemodifier/learn-fracturing/ DF-VFX's excellent tutorials page
+[http://blenderphysics.com/fracturemodifier/learn-fracturing/ BlenderPhysics.com's excellent tutorials page]
 
-(NOTE: Current builds are merged with Blender v2.79 and in general the FM builds merged with official releases are usually available a week or two after the official releases.  Only 64 bit builds are provided.)
+[https://www.youtube.com/results?search_query=fracture+modifier+bone+studio Bone-Studio tutorials, Spanish language]
+
+[https://www.youtube.com/results?search_query=fracture+modifier YouTube tutorials list]
 
 ==Other Links==
 (NOTE: Jen's build is always the latest development and testing build.  It is only in 64 bit Linux with static libs for use on most distros. Use our Blender Artist forum thread to watch for when those are released.  Sometimes Kai's Graphicall build will provide a development build also.)
 
 *http://www.jensverwiebe.de/Blender/blender_fracture_modifier_linux64_latest.tar.xz      Linux 64 bit build
-*http://www.graphicall.org/1148  Windows 64 bit Graphicall.org Build
+*http://www.graphicall.org/1148  Windows 64 bit Graphicall.org Build (note: sometimes these time out)
 
 ==Source Code==
+
+(NOTE: Current builds are merged with Blender v2.79b and in general the FM builds merged with official releases are usually available a week or two after the official releases. Only 64 bit builds are provided. Blender 2.8 integration is being worked on.)
 
 The Fracture Modifier is a special branch of Blender.  It uses methods that are currently not compatible with Blender's internal storage capabilities. The FM branch is merged with and can be used in place of official releases with complete compatibility of other release features.  A "config" folder under the 2.79 folder can be created by the user to avoid sharing settings with other installed Blender versions. This way the FM can be tested separately. 
 
@@ -80,6 +85,9 @@ Helper addon and pie menu source code https://github.com/scorpion81/blender-frac
 If you have issues building the Fracture Modifier branch please ask for help on our Blender Artists thread or in our IRC chat room mentioned above or check the [https://wiki.blender.org/index.php/Dev:Doc/Building_Blender Building Blender wiki page].
 
 <b>NOTE:</b>  Our exciting under development features are available if you build yourself from the source code repo.  Feel free to ask questions about features in development on our BA thread mentioned elsewhere here.
+
+==Documentation Source==
+Git repo for this documentation source: [https://github.com/JT-a/blender-fracture-docs https://github.com/JT-a/blender-fracture-docs] 
 
 <br />
 
