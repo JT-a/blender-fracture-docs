@@ -10,7 +10,7 @@ Immediate language needs are French, Russian, Spanish and Chinese.
 
 For actual development page see:<br /> 
 https://github.com/JT-a/blender-fracture-docs/wiki/Fracture_Documentation
-or an archived version at:
+<br />or an archived version at:<br />
 https://en.blender.org/index.php?title=User:Jta/Fracture_Modifier/User_Documentation/Sandbox
 
 The first language branch is available. DE translation mangled courtesy of Google Translate!
